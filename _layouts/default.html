@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/spatialhumanities/spatialhumanities/i/icon.png">
+  <link rel="icon" type="image/png" href="{{site.url}}/i/icon.png">
 
   <!-- Feeds -->
   <link rel="alternate" type="application/rss+xml" title="Atom" href="/atom.xml">
@@ -19,7 +19,7 @@
 
   <!-- Style Sheets -->
   <link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="/spatialhumanities/c/style.css" type="text/css">
+  <link rel="stylesheet" href="{{ site.url}}/c/style.css" type="text/css">
   {% for css in page.css %}
   <link rel="stylesheet" href="{{ css }}" type="text/css">
   {% endfor %}
@@ -41,11 +41,11 @@
     {% if page.url != '/index.html' %}
     <nav id="site-navigation">
       <ul>
-        <li class="spatial-turn"><a href="/spatial-turn">Spatial Turn</a></li>
-        <li class="stepbystep"><a href="/stepbystep"><em>Step By Step</em></a></li>
-        <li class="projects"><a href="/project">Projects & Groups</a></li>
-        <li class="resources"><a href="/resources">Resources</a></li>
-        <li class="about"><a href="/about">About</a></li>
+        <li class="spatial-turn"><a href="{{site.url}}/spatial-turn">Spatial Turn</a></li>
+        <li class="stepbystep"><a href="{{site.url}}/stepbystep"><em>Step By Step</em></a></li>
+        <li class="projects"><a href="{{site.url}}/project">Projects & Groups</a></li>
+        <li class="resources"><a href="{{site.url}}/resources">Resources</a></li>
+        <li class="about"><a href="{{site.url}}/about">About</a></li>
       </ul>
     </nav>
     {% endif %}
