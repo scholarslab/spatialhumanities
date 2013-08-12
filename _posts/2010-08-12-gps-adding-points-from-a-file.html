@@ -1,0 +1,78 @@
+---
+layout: post
+bodyclass: stepbystep
+title: GPS - adding points to your map
+tags:
+- ArcGIS
+- GIS
+- GPS
+- stepbystep
+excerpt: '<p>Is fieldwork part of your research?  Have you saved GPS locations and want to put those points on a map?  With the Global Positioning System now in our cars, phones, and even on our wrists, marking locations has never been easier.  You have a few choices for moving your collected locations from your GPS device to GIS software.  In this step by step guide, let&#8217;s review the process to add a file containing latitude and longitude values to ArcGIS.</p>'
+difficulty: moderate
+requirements: ArcGIS 9.3 or higher and a GPS device
+---
+
+<h2>Steps</h2>
+<ol>
+	<li>
+
+[caption id="attachment_380" align="alignnone" width="150" caption=""]<a href="/i/2010/08/etrexwikimedia.jpg"><img class="size-thumbnail wp-image-380" title="etrexwikimedia" src="/i/2010/08/etrexwikimedia-150x150.jpg" alt="" width="150" height="150" /></a>
+<figcaption>GPS Device</figcaption>
+</figure>
+
+<p>Your GPS device probably came with some long-lost printed instructions for extracting saved locations to a data file.  Check the manufacturer&#8217;s web site for user manuals.  Be sure your GPS is set to store your locations in decimal degrees.  Again check the user manual if you're not sure.</p>
+
+<p>Your goal is to save your GPS locations to one of these file formats:</p>
+<ul>
+	<li>Microsoft Excel spreadsheet (.xls or .xlsx)</li>
+	<li>comma separated values (.txt, .asc, .csv)</li>
+	<li>tab delimited values (.tab)</li>
+</ul>
+
+</li>
+	<li>
+
+<figure><a href="/i/2010/08/rules.png"><img class="size-full wp-image-382" title="rules" src="/i/2010/08/rules.png" alt="" width="150" height="150" /></a>
+<figcaption>Rules, yes rules</figcaption>
+</figure>
+
+<p>With your GPS data now saved to a file, it&#8217;s a good idea to save a backup copy before making any changes.</p>
+
+<p>GIS is persnickety about formatting, so edit your data to match these rules for column names:</p>
+<ul>
+<li>Must start with a letter</li>
+<li>Must contain only letters, numbers, and underscores</li>
+<li>Must not exceed 64 characters</li>
+</ul>
+
+<p>Problems reading the data usually trace back to formatting issues.  So your attention to detail here will save time later. Rules, rules, rules...</p>
+</li>
+	<li>
+
+<figure><a href="/i/2010/08/addxy.png"><img class="size-full wp-image-397 " title="addxy" src="/i/2010/08/addxy.png" alt="" width="150" height="150" /></a>
+<figcaption>ArcMap&#39;s Add XY Data tool</figcaption>
+</figure>
+
+<p>From the ArcMap main menu, click Tools / Add XY Data...  Click the folder button and browse to your GPS data file.  (If you're adding an Excel file, ArcMap will guide you to choose a worksheet.)   Back on the Add XY Data panel, set the X Field to your longitude column and Y Field to latitude.</p>
+
+<p>Here&#8217;s the tricky part...Click the Edit button and set the coordinate system to match your GPS data&#8217;s coordinate system.  If that sounded like blah, blah, blah, to you then click Edit / Select / Geographic Coordinate Systems / World / WGS 1984.prj.  This is the default datum used by all GPS devices, so unless you've changed it (yea, right) you're golden.</p>
+<p></li></p>
+	<li>
+
+<figure><a href="/i/2010/08/points.png"><img class="size-full wp-image-400" title="points" src="/i/2010/08/points.png" alt="" width="150" height="150" /></a>
+<figcaption>Yea!  Points on a map.</figcaption>
+</figure>
+
+<p>You&#8217;ll likely see a warning message that your table doesn't have an Object-ID field.  Just click OK and you&#8217;ll see a new "event" layer in your table of contents and your points appear on the map!</p>
+
+<p>Think of this "event" layer as temporary.  Let&#8217;s make it permanent.  Right click the "event" layer, choose Data / Export Data, and save your points to a shapefile and add the shapefile to your map.  Then remove the "event" layer.</p>
+
+<p>Now use your mad GIS skills to change the appearance, add other layers, and visualize and analyze with your new GPS points!</p>
+</li>
+</ol>
+
+<h2>Learn More</h2>
+<ul>
+	<li><a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=Adding_x,y_coordinate_data_as_a_layer">Adding X,Y Data to ArcMap</a></li>
+	<li><a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?id=759&amp;pid=745&amp;topicname=Working_with_Microsoft_Excel_files_in_ArcGIS">Formatting a table in Microsoft Excel for use in ArcGIS</a>.</li>
+</ul>

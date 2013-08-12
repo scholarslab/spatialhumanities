@@ -1,0 +1,15 @@
+---
+layout: stepbystep
+title: Spatial Humanities Step by Step
+bodyclass: stepbystep
+---
+{% for post in site.posts %}
+<article>
+  <header>
+    <p class="kicker">{{ post.date | date: "%d %B %Y" }}</p>
+    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+  </header>
+  {{ post.excerpt }}
+  <p class="continue">Continue reading <a href="{{ post.url }}">&#8220;{{ post.title }}&#8221;</a></p>
+</article>
+{% endfor %}

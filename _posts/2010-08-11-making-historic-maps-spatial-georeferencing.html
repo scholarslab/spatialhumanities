@@ -1,0 +1,94 @@
+---
+layout: post
+bodyclass: stepbystep
+title: Georeferencing - making historic maps spatial
+tags:
+- ArcGIS
+- georeferencing
+- GIS
+- stepbystep
+excerpt: '<p>Sure, we all love the look of cool historic maps. Although hand drawn cartographic flourishes may be mostly things of the past, Geographic Information Systems can bring old maps to life.  By adding spatial smarts called georeferencing, historic maps can play nicely with their  cartographic descendants, GIS layers. So let&#8217;s review the process to georeference historic maps step by step.</p>'
+difficulty: moderate
+requirements: ArcGIS 9.3 or higher, a basemap, and a cool historic map
+---
+
+<h2>Steps</h2>
+
+<ol>
+	<li>
+
+<figure>
+	<a href="/i/2010/08/1907map02-e1281546990566.jpg"><img class="size-full wp-image-426 " title="Cool Historic Map" src="/i/2010/08/1907map02-e1281546990566.jpg" alt="Cool Historic Map" width="150" height="150" /></a>
+	<figcaption>Cool Historic 1907 Sanborn Map</figcaption>
+</figure>
+
+<p>Cool historic map, meet Mr. Scanner. Scanned, photographed, or downloaded from an online source, you need a digital version of your map. Most all image formats are fair game. You&#8217;ll find .jpg and .tiff are two common formats.  If your map is only available as a .pdf, convert it to a .jpg or .tiff, then proceed.</p>
+	</li>
+	<li>
+
+<figure>
+	<a href="/i/2010/08/AerialPhoto.png"><img class="size-thumbnail wp-image-319" title="AerialPhoto" src="/i/2010/08/AerialPhoto-150x150.png" alt="" width="150" height="150" /></a>
+<figcaption> Basemap</figcaption>
+</figure>
+
+<p>You need an accurate basemap that&#8217;s already georeferenced and covers the same area as your historic map. Street centerlines or aerial photos can make great basemaps. Often you can find what you need online. If you're stuck, make friends with your local GIS expert. They will direct you to a winning basemap.</p>
+</li>
+	<li>
+
+<figure>
+	<a href="/i/2010/08/GeoRefToolbar1.png">
+		<img class="size-thumbnail wp-image-327" title="GeoRefToolbar" src="/i/2010/08/GeoRefToolbar1-150x150.png" alt="" width="150" height="150" />
+	</a>
+	<figcaption>Georeferencing Toolbar</figcaption>
+</figure>
+
+<p>Start ArcMap and turn on the Georeferencing toolbar. On the toolbar, click the down arrow to be sure Auto Adjust is checked. Add your basemap and zoom to the approximate extent of your historic map. Now add the historic map. Don't see your map?  No worries, just click the down arrow on the friendly Georeferencing toolbar and choose Fit To Display and you&#8217;ll be face to face with your historic map.</p>
+
+</li>
+	<li>
+
+<figure>
+<a href="/i/2010/08/OneCtrlPt.jpg"><img class="size-thumbnail wp-image-448" title="One control point - maps start to align" src="/i/2010/08/OneCtrlPt-150x150.jpg" alt="" width="150" height="150" /></a>
+<figcaption>One control point - maps start to align</figcaption>
+</figure>
+
+<p>Back on the Georeferencing  Toolbar, click the Add Control Points tool, find a location that&#8217;s easy to spot on the historic map and click it. Turn off your historic map layer (uncheck it in the table of contents). With the Add Control Points tool active, find and click that same location on the basemap. When you turn on your historic map again, you&#8217;ll see these two points automatically snapped into alignment. You just created your first control point!</p>
+</li>
+	<li>
+
+		<figure>
+<a href="/i/2010/08/SanbornOverlay.jpg"><img class="size-thumbnail wp-image-354" title="SanbornOverlay" src="/i/2010/08/SanbornOverlay-150x150.jpg" alt="" width="150" height="150" /></a>
+<figcaption> Success! Our historic map georeferenced to the basemap.</figcaption>
+</figure>
+
+<p>Add at least three control points. You&#8217;ll see the historic map move into better alignment with each new control point. If you make a mistake, use the View Link Table button to show all your control points and choose one to delete. Like the way things look? On the toolbar, click Update Georeferencing to save your work.</p>
+
+<p>Tips: Try to find control points spread all around your map. Generally, more control points with wide distribution = better alignment. With layer transparency you can see both maps-Right click the historic map layer, then Properties/Display/Transparency.</p>
+</li>
+	<li>
+
+<figure>
+<a href="/i/2010/08/folder.png"><img class="size-full wp-image-363" title="folder" src="/i/2010/08/folder.png" alt="" width="150" height="150" /></a>
+<figcaption>Our cool historic map has a few new friends.</figcaption>
+</figure>
+
+<p>Behind the scenes, the GIS with great stealth has stored your georeferencing work in new files that are partners with your cool historic map and reside in the same folder. Keep all these files together in one folder and GIS software will forever align your historic map with other georeferenced layers.</p>
+</li>
+</ol>
+<h2>Learn more</h2>
+<p>The hardest part Íof becoming a georeferencing guru can be all the zooming, panning, and turning on and off layers to find those common points between the two maps. As you gain confidence in your skills, this map navigation becomes much easier. You&#8217;ll hear folks say georeferencing is part science and part art. The art often lies in interpreting multiple maps to sleuth out common control points.</p>
+
+<p>Of course, these techniques work for any scanned map, not just the cool historic variety.  To learn more about the value of georeferenced historic maps and additional georeferencing tools and techniques check these links:</p>
+<ul>
+	<li><a href="http://www.davidrumsey.com/gis/ch01.pdf">Historical Maps in GIS</a> by David Rumsey and Meredith Williams</li>
+	<li><a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=Georeferencing_video_sample">Georeferencing Video</a> from ArcGIS online help</li>
+	<li><a title="Georeferencing A Raster Dataset" href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=Georeferencing_a_raster_dataset"> Georeferencing A Raster Dataset </a>from ArcGIS online help</li>
+	<li>Video: <a href="http://www.youtube.com/watch?v=jy9igyZbLjs">Georeferencing Tutorial for a Graduate Digital Humanities Course</a> by Ryan Cordell</li>
+</ul>
+<h3>Projects Using Georeferenced Maps</h3>
+These projects show georeferenced maps working in concert with other geospatial datasets and are good examples of the value georeferencing adds to historic maps.
+<ul>
+	<li><a href="http://africamap.harvard.edu/">AfricaMap</a></li>
+	<li><a href="http://googlelittrips.com/GoogleLit/Home.html">GoogleLitTrips</a></li>
+	<li><a href="http://hypercities.com/">Hypercities</a></li>
+</ul>

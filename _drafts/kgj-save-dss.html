@@ -1,0 +1,81 @@
+---
+layout: post
+bodyclass: stepbystep
+title: KGJ - save DSS
+tags: []
+status: draft
+type: post
+published: false
+meta:
+  _edit_last: '11'
+---
+<div class="summary">
+<div class="article-meta">
+<div class="difficulty"><span>Difficulty:</span> Moderate</div>
+<div class="reqs"><span>Requirements:</span> ArcGIS 9.3 or higher.  Screen shots and examples here are from ArcGIS 10.</div>
+</div>
+Geocoding is a very useful activity within GIS as it converts a digital list of locations (such as street addresses) to points on a map. In this example our point locations are the addresses of contemporary taxidermists in Texas, as this could be part of a study about people and their beloved pets, and you could use the resulting map to plan a trip of interviews around the state. But even if your mapping interests do not extend to animals and taxidermy, you&#8217;ll get the idea of geocoding. Street addresses will be matched to a current street network with its known range of addresses, and a point will be placed (exactly or approximately) on a map where each building is located.  These Geocoding services currently work for street addresses in the USA, Canada, and most of Europe.
+
+</div>
+<div class="article">
+<h2>Steps</h2>
+<ol>
+	<li>
+
+[caption id="attachment_205" align="alignnone" width="150" caption="Excel spreadsheet - one row for each Texas taxidermist"]<a href="/i/2010/06/Screen-shot-2010-06-21-at-10.11.08-AM.png"></a>
+<figcaption><a href="/i/2010/10/Excel2.gif"><img class="alignnone size-thumbnail wp-image-627" title="Excel" src="/i/2010/10/Excel2-150x150.gif" alt="" width="150" height="150" /></a></figcaption>
+</figure>
+
+You have acquired a list of addresses from the National Taxidermists Association. These are arranged in an Excel spreadsheet, with one piece of information in each column (for example, name of business, street address, city, state, zip code).  [Be careful if you use zip codes in parts of Maine, New Hampshire, Vermont and Massachusetts, as their values lead with zero (0) and must be treated as text (rather than as a number) within Excel.]
+</li>
+	<li>
+
+[caption id="attachment_207" align="alignnone" width="150" caption="Drill down to Excel worksheet"]<a href="/i/2010/06/Screen-shot-2010-06-21-at-10.20.45-AM.png"></a>
+<figcaption><a href="/i/2010/10/drilldown1.gif"><img class="alignnone size-thumbnail wp-image-640" title="drilldown" src="/i/2010/10/drilldown1-150x143.gif" alt="" width="150" height="143" /></a></figcaption>
+</figure>
+
+Open a new and empty map in ArcMap.  Add the Excel spreadsheet into the table of contents by browsing down to the “sheet” of data itself.  A single Excel spreadsheet may contain multiple individual sheets of data<strong>.</strong>
+</li>
+	<li>
+
+[caption id="attachment_207" align="alignnone" width="150" caption="Right click and good things happen in GIS"]<a href="/i/2010/06/Screen-shot-2010-06-21-at-10.20.45-AM.png"></a>
+<figcaption><a href="/i/2010/10/rightclick.gif"><img class="alignnone size-thumbnail wp-image-644" title="rightclick" src="/i/2010/10/rightclick-150x150.gif" alt="" width="150" height="150" /></a></figcaption>
+</figure>
+
+Right-click on the name of your table in the table-of-contents and choose Geocode Addresses...
+</li>
+	<li>
+
+[caption id="attachment_207" align="alignnone" width="150" caption="Choose an Address Locator"]<a href="/i/2010/06/Screen-shot-2010-06-21-at-10.20.45-AM.png"></a>
+<figcaption><a href="/i/2010/10/addresslocator.gif"><img class="alignnone size-thumbnail wp-image-652" title="addresslocator" src="/i/2010/10/addresslocator-150x150.gif" alt="" width="150" height="150" /></a></figcaption>
+</figure>
+
+You are prompted to Choose an Address Locator (the street network) that you want to use. Select the first one on the list (9.3.1 North America Geocode Service from ArcGIS Online) and click OK.   If you are NOT prompted with a list of Address Locators from which to choose, then you can ADD one by following the following <a href="http://help.arcgis.com/en/arcgisonline/content/index.html#/Using_standard_geocoding_tasks/011q0000000t000000/"><strong>Desktop steps (#2 - #6)</strong></a> to connect to an ArcGIS Server
+</li>
+	<li>
+
+[caption id="attachment_207" align="alignnone" width="150" caption="Geocoding Settings"]<a href="/i/2010/06/Screen-shot-2010-06-21-at-10.20.45-AM.png"></a>
+<figcaption><a href="/i/2010/10/dialogue.gif"><img class="alignnone size-thumbnail wp-image-655" title="dialogue" src="/i/2010/10/dialogue-150x150.gif" alt="" width="150" height="150" /></a></figcaption>
+</figure>
+
+n the Geocode Addresses dialogue box that appears, confirm that the <strong>Input Fields</strong> it is looking for are the ones within your Excel sheet.   Specify what you want your output file named and saved (the points that will be created, either as a shapefile or a feature class). Accept all other defaults for now and click <strong>OK</strong>.  When it is complete, you will be shown a screen that lets you know how many of the addresses from your list could be “matched” to the street network. If there are many that were unmatched you can return to the list to inspect and correct ones as you choose.  Otherwise, you can <strong>Close</strong> the window and your new point dataset will be displayed.
+</li>
+	<li>
+
+[caption id="attachment_169" align="alignnone" width="150" caption="Texas Taxidermists"]<a href="/i/2010/05/Hypercities-2.jpg"></a>
+<figcaption><a href="/i/2010/10/texaspoints.gif"><img class="alignnone size-thumbnail wp-image-658" title="texaspoints" src="/i/2010/10/texaspoints-150x150.gif" alt="" width="150" height="150" /></a></figcaption>
+</figure>
+
+To give your points some geographic context, you can add a Basemap, selected from the collection in ArcGIS Online.  From the File menu, choose Add Data and Add Basemap.
+</li>
+</ol>
+</div>
+<div class="closing">
+<div>
+<h3>Learn more</h3>
+<ul>
+	<li><a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=An_overview_of_geocoding">ArcGIS Geocoding Help</a></li>
+	<li>To generate a simple web-based image of geocoded points, not within ArcGIS try<a href="http://google.com/"> </a><strong><a href="http://www.batchgeo.com/">batchgeo</a></strong>, an online geocoder.</li>
+</ul>
+</div>
+</div>

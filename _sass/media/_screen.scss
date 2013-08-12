@@ -1,0 +1,617 @@
+@font-face {
+    font-family: 'socialicons';
+    src: url('//static.scholarslab.org/fonts/socialicons/socialicons.eot');
+    src: url('//static.scholarslab.org/fonts/socialicons/socialicons.eot?#iefix') format('embedded-opentype'),
+         url('//static.scholarslab.org/fonts/socialicons/socialicons.woff') format('woff'),
+         url('//static.scholarslab.org/fonts/socialicons/socialicons.ttf') format('truetype'),
+         url('//static.scholarslab.org/fonts/socialicons/socialicons.svg#socialicons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  @include box-sizing(border-box);
+  margin:0;
+  padding:0;
+}
+
+@include establish-baseline;
+
+html {
+  @include background(
+    radial-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
+    image-url('rumsay.jpg') top right no-repeat fixed
+  );
+  background-size:cover;
+  background-attachment:fixed;
+}
+
+body {
+  font-family: $default-font;
+  color: $default-color;
+  @include container;
+  position:relative;
+  padding:0;
+}
+
+a {
+  color: $link-color;
+  @include link-colors($link-color, $link-hover-color, $link-active-color,
+  $link-visited-color, $link-focus-color);
+
+  @include transition(color $default-transition-duration, background-color $default-transition-duration);
+
+  &:before {
+    @include single-transition(color);
+  }
+
+  img {
+    @include single-transition(opacity);
+  }
+}
+
+#{headings()} {
+  a {
+    text-decoration:none;
+  }
+}
+
+h1,h2 {
+  font-weight:normal;
+}
+
+h1 {
+  @include adjust-font-size-to(32px);
+  @include adjust-leading-to(2,32px);
+}
+
+h2 {
+  @include adjust-font-size-to(24px);
+  @include leader(2, 24px);
+}
+
+h3 {
+  @include adjust-font-size-to(20px);
+  color: $default-color-light;
+  font-weight:normal;
+  @include leader(2, 20px);
+  h2 + & {
+    @include leader(1, 20px);
+  }
+}
+
+h4 {
+  @include adjust-font-size-to($base-font-size);
+  @include leader(2);
+  h3 + & {
+    @include leader(1);
+  }
+}
+
+h5 {
+  @include adjust-font-size-to($base-font-size);
+  color: $default-color-light;
+  @include leader(2);
+  h4 + & {
+    @include leader(1);
+  }
+
+}
+
+h6 {
+  @include adjust-font-size-to($base-font-size);
+  font-style:italic;
+  color: $default-color-light;
+  @include leader(2);
+  h5 + & {
+    @include leader(1);
+  }
+}
+
+#{headings(3,6)} {
+   + p {
+    margin-top:0;
+  }
+}
+
+p {
+  margin: rhythm(1) 0;
+}
+
+blockquote {
+  margin:0;
+  @include adjust-font-size-to(20px);
+  border-left: rhythm(0.25, 20px) solid $default-color-lightest;
+  padding-left: rhythm(1, 20px);
+  font-style:italic;
+
+  figure & {
+    text-align:left;
+  }
+
+  & + figcaption {
+    margin-left: rhythm(1.25, 14px);
+    text-align:left;
+  }
+
+  & :last-child {
+    margin-bottom:0;
+  }
+}
+
+figure {
+  margin: rhythm(2) 0;
+  text-align:center;
+
+  img {
+    border: 1px solid $default-color-lightest;
+    padding: rhythm(0.25);
+    background: #fff;
+    @include box-shadow(0 0 5px rgba(black, 0.1));
+  }
+}
+
+figcaption {
+  @include adjust-font-size-to(14px);
+  @include leader(1, 14px);
+  @include adjust-leading-to(1, 14px);
+  color: $default-color-light;
+}
+
+dl {
+  margin: rhythm(1) 0;
+
+  dt {
+    font-weight:bold;
+  }
+  dd {
+    margin: 0 0 rhythm(1) rhythm(1);
+  }
+}
+
+ul {
+  list-style:disc;
+}
+
+ol {
+  list-style:decimal;
+}
+
+ul,ol {
+  padding:0;
+  margin: rhythm(1) 0 rhythm(1) rhythm(1);
+
+  nav & {
+    margin-left:0;
+  }
+
+  ul {
+    list-style: circle;
+  }
+
+  ol {
+    list-style: upper-alpha;
+  }
+
+  ul, ol {
+    margin: 0 0 0 rhythm(1);
+
+    ul {
+      list-style:square;
+    }
+
+    ol {
+      list-style:lower-alpha;
+    }
+  }
+}
+
+table {
+  border-collapse:collapse;
+  border-spacing:0;
+}
+
+th,
+td {
+  padding: rhythm(1) rhythm(0.5) 0;
+  @include trailing-border(1px);
+  border-color: rgba($default-color,.2);
+}
+
+th {
+  @include trailing-border(3px);
+  text-align:left;
+}
+
+img {
+  max-width:100%;
+  width:auto;
+  height:auto;
+}
+
+code {
+  font-family: monospace;
+  color: $code-color;
+}
+
+del {
+  color: $default-color-lighter;
+}
+
+ins {
+  text-decoration:none;
+  background: $ins-color;
+}
+
+address {
+  font-style:normal;
+  margin: rhythm(1) 0;
+}
+
+br {
+  margin:0;
+  line-height:0;
+}
+
+hr {
+  border:none;
+  text-align:center;
+  &:before {
+    display:block;
+    content: " · · · · · ";
+    color: rgba($default-color-light, 0.5);
+  }
+}
+
+a.ftn {
+  @include adjust-font-size-to(12px);
+  line-height:0 !important;
+  font-family: $alt-font;
+  vertical-align: super;
+  text-decoration:none;
+  /*&:link,*/
+  /*&:visited {*/
+    /*color: $default-color-lighter;*/
+  /*}*/
+  /*&:hover,*/
+  /*&:focus,*/
+  /*&:active {*/
+    /*color: $default-color-light;*/
+  /*}*/
+}
+
+.kicker {
+  margin-bottom:0;
+  @include adjust-font-size-to(14px);
+  @include adjust-leading-to(1, 14px);
+  font-style:italic;
+  color: $default-color-light;
+  
+   & + * {
+     margin-top:0 !important;
+   }
+ }
+
+// Global header
+#global-header {
+  background: darken($base-color, 20%);
+  background-color: rgba(black, 0.35);
+  padding: rhythm(0.5) $grid-padding;
+  display:table;
+  width: 100%;
+  a {
+    text-decoration:none;
+    width:50%;
+    display:table-cell;
+    &:link,
+    &:visited {
+      img {
+        opacity: 0.7;
+      }
+    }
+    &:hover,
+    &:focus {
+      img {
+        opacity: 0.8;
+      }
+    }
+    &:active {
+      img {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  img {
+    vertical-align:middle;
+  }
+
+}
+
+#uvalibrary-link {
+  text-align:right;
+}
+
+// Site header
+header[role=banner] {
+  @include clearfix;
+  z-index:100;
+  padding: rhythm(1) $grid-padding 0;
+
+  @include background-size(cover);
+
+  h1 {
+    @include adjust-font-size-to(30px);
+    @include adjust-leading-to(3,30px);
+    margin:0;
+  }
+
+  a {
+    color: #fcfcfc;
+    text-decoration:none;
+  }
+
+nav {
+    background: rgba($base-color, 0.5);
+    @include bleed($grid-padding);
+    margin-top: rhythm(1);
+      @include box-shadow(inset 0 -6px 6px -6px rgba(black, 0.5));
+  
+    ul {
+      margin:0;
+      text-align:right;
+      @include adjust-font-size-to(14px);
+    }
+
+    li {
+      display:inline-block;
+    }
+
+    a {
+      display:block;
+      margin:rhythm(0.25, 14px) 0 0 0;
+      padding: rhythm(0.25, 14px) rhythm(0.5, 14px);
+      color: darken($base-color, 20%);
+      @include box-shadow(inset 0 -6px 6px -6px rgba(black, 0.25));
+      &:link,
+      &:visited {
+        background: rgba(white, 0.8);
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: rgba(white, 0.95);
+      }
+
+    }
+  }
+}
+
+@each $page in spatial-turn, projects, research, geoinst, stepbystep, q-and-a, about {
+  .#{$page} nav li.#{$page} a {
+    background: white;
+    @include box-shadow(none);
+    color: darken($base-color, 10%);
+  }
+}
+
+#site-logo {
+  display:block;
+  text-align:left;
+
+  h1 {
+    @include adjust-font-size-to(40px);
+    margin-bottom:rhythm(0.5, 40px);
+    line-height:1;
+  }
+
+  h2 {
+    @include adjust-font-size-to(16px);
+    margin:0;
+    line-height:1;
+  }
+}
+
+div[role=main] {
+  background: white;
+  padding: rhythm(1) $grid-padding;
+  @include clearfix;
+}
+
+article + article:before {
+  content: " · · · · · ";
+  color: $default-color-light;
+  text-align:center;
+  display:block;
+}
+
+#projects {
+  @include column-count(2);
+  -webkit-column-gap: 2em;
+  column-gap: 2em;
+}
+
+.project {
+  overflow:auto;
+  min-height:1px;
+
+  h2 {
+    margin-bottom: 1em;
+  }
+
+  img {
+    display:block;
+    max-width: 40%;
+    float:right;
+    margin-left: rhythm(1);
+    margin-bottom: rhythm(1);
+    border:1px dotted $default-color-light;
+    padding: rhythm(0.25);
+  }
+}
+
+// Footers
+footer[role=contentinfo] {
+  @include clearfix;
+  @include adjust-font-size-to(14px);
+  @include adjust-leading-to(0.75, 14px);
+  background: darken($base-color, 20%);
+  background-color: rgba(black, 0.35);
+  color: #eee;
+  color: rgba(255,255,255,0.75);
+  text-align:center;
+  padding-top: rhythm(1,14px);
+  .elsewhere {
+    list-style:none;
+    text-align:center;
+
+    li {
+      display:inline;
+    }
+  }
+
+  a {
+    @include link-colors(#eee,#eee, #fff, #fff, #fff);
+    @include link-colors(rgba(255,255,255,0.75));
+    text-decoration:none;
+    &:link,
+    &:visited {
+      &:before {
+        color: #ddd;
+        color: rgba(white, 0.5);
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      &:before {
+        color: #f0f0f0;
+        color: rgba(white, 0.75);
+      }
+    }
+  }
+
+  .vcard {
+    span {
+      display:inline-block;
+    }
+
+    .organization-name,
+    .organization-unit,
+    .postal-code,
+    abbr[title=work] {
+      &:after {
+        content: " ·";
+        color: rgba(white, 0.25);
+        text-decoration:none !important;
+      }
+    }
+
+    abbr {
+      border:none;
+      &.type {
+        color: rgba(white, 0.5);
+      }
+    }
+  }
+}
+
+.elsewhere a {
+  @include squish-text();
+  vertical-align:sub !important;
+}
+
+.elsewhere a:before {
+  font-size: 54px !important;
+  line-height: 54px;
+  font-family: 'socialicons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  color: rgba(black,0.25);
+}
+
+.google:before {
+  content: "\2b";
+}
+.github:before {
+  content: "\67";
+}
+.twitter:before {
+  content: "\74";
+}
+.facebook:before {
+  content: "\66";
+}
+.vimeo:before {
+  content: "\76";
+}
+
+@include at-breakpoint(8) {
+
+  header[role=banner] {
+    border-top:0;
+    h1 {
+      margin-bottom:0;
+      @include adjust-leading-to(2, 30px);
+    }
+  }
+  div[role=main] {
+    @include pad(1,1, 16);
+  }
+  #primary,
+  article .entry {
+    @include span-columns(9,14);
+  }
+
+  #secondary,
+  article footer {
+    @include span-columns(4 omega, 14);
+  }
+
+}
+@if $development == true {
+
+    * {
+      background-image:none;
+      background-color: transparent !important;
+    }
+
+    html {
+        @include baseline-grid-background;
+    }
+    body {
+        @include susy-grid-background;
+    }
+}
+
+
+/*
+.spatial-turn {
+
+  @media (min-width: 700px) {
+    article {
+      @include clearfix;
+      .entry {
+        @include span-columns(7, 10);
+      }
+      footer {
+        @include span-columns(3 omega,10);
+
+        h2,h3 {
+          margin-top:0;
+        }
+
+        ul {
+          margin-top:0;
+        }
+      }
+    }
+  }
+}
+*/

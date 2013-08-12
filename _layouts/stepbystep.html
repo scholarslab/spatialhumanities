@@ -1,0 +1,43 @@
+---
+layout: default
+bodyclass: stepbystep
+---
+<article>
+  <header>
+    <h1>{{ page.title }}</h1>
+  </header>
+  <div class="entry">
+  {{ content }}
+  </div>
+  <footer>
+About Step By Step
+<p><em>Spatial Humanities Step By Step</em> is a peer-reviewed series of tutorials and guides to getting things done in teaching and research with spatial tools and resources. Interested in submitting content to <em>Step By Step</em>? Please contact the editor.</p>
+<ul>
+	<li><span class="sbs-board-name">Patrick Florance</span>
+<span class="sbs-board-inst">Tufts University</span></li>
+	<li><span class="sbs-board-name">Chris Gist</span>
+<span class="sbs-board-inst">University of Virginia</span></li>
+	<li><span class="sbs-board-name">Tracey Hughes</span>
+<span class="sbs-board-inst">Colorado Mountain College</span></li>
+	<li class="editor"><span class="sbs-board-name">Kelly Johnston</span>
+<span class="sbs-board-inst">University of Virginia</span>
+<span class="sbs-board-role">Editor</span></li>
+	<li><span class="sbs-board-name">Scott Nesbit</span>
+<span class="sbs-board-inst">University of Richmond</span></li>
+	<li><span class="sbs-board-name">Bethany Nowviskie</span>
+<span class="sbs-board-inst">University of Virginia</span></li>
+	<li><span class="sbs-board-name">Diana Stuart Sinton</span>
+<span class="sbs-board-inst">University of Redlands</span></li>
+	<li><span class="sbs-board-name">Ginny White</span>
+<span class="sbs-board-inst">University of Oregon</span></li>
+</ul>
+    <ul>
+      {% for subpage in site.pages %}
+      {% if subpage.url contains '/stepbystep/' %}
+      <li{% if page.url == subpage.url %} class="current"{% endif %}><a href="{{subpage.url}}">{{ subpage.title }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </footer>
+</article>
+

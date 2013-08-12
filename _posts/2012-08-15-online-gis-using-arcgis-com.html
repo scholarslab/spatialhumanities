@@ -1,0 +1,123 @@
+---
+layout: post
+bodyclass: stepbystep
+title: Online GIS Using ArcGIS.com
+tags:
+- ArcGIS
+- GIS
+- map
+- stepbystep
+difficulty: easy
+requirements: 'Free ESRI personal account, shapefile of your study area (or a .csv, .txt, or .gpx file), internet access, web browser'
+optional: 'Smartphone and free ESRI mobile app available through the Apple Store, Android Market, or Windows Marketplace'
+excerpt: '<p>This is a multi-step process that will enable you to add data to a webmap, embed the webmap in your own website, and/or view the webmap on your smartphone using the free ESRI app.</p>'
+---
+
+<h2>Steps</h2>
+<ol>
+	<li>
+		<h2>Create Map</h2>
+
+<figure>
+	<a href="/i/2012/08/1Map.png"><img class=" wp-image-1767   " title="1Map" src="/i/2012/08/1Map-300x155.png" alt="" width="300" height="155" /></a>
+<figcaption> a. ArcGIS.com/home</figcaption>
+</figure>
+
+<p>a. Sign up for a free ESRI personal account at <a title="ArcGIS.com/home" href="http://www.arcgis.com/home/">www.arcgis.com/home</a>. Click the ‘Sign In’ link and create an account if you do not already have one. Click the ‘Map’ tab. Once the webmap has loaded, follow the brief instructions in the sidebar: Zoom to your area of interest, select your basemap, and for the purposes of this exercise, save your map. Give it a title, and add tags to allow others to find it. Click the ‘My Content’ tab.</p>
+
+
+<figure>
+	<a href="/i/2012/08/2MyContent.png"><img class=" wp-image-1767   " title="2MyContent" src="/i/2012/08/2MyContent.png" alt="" width="400" height="124" /></a>
+<figcaption> b. My Content</figcaption>
+</figure>
+
+<p>b. In ‘My Content’, select the checkbox to the left of your new map. The ‘Share’ tab will become active.</p>
+
+<figure>
+	<a href="/i/2012/08/3Share.png"><img class=" wp-image-1788 " title="3Share" src="/i/2012/08/3Share-300x221.png" alt="" width="200" height="147" /></a>
+<figcaption> c. Sharing</figcaption>
+</figure>
+
+<p>c. Click ‘Share’ and in the dialog that appears, check the box next to ‘Everyone’. The map will become public once it has been shared. Alternatively, you could create an ArcGIS.com ‘Group’ so that only group members have access. All members must have ESRI accounts.</p>
+
+<p>d. Now, click on the title of your map listed in the ‘My Content’ data grid to return to your webmap.</p>
+</li>
+	<li>
+		<h2>Add Shapefile</h2>
+
+<figure>
+	<a href="/i/2012/08/4shapefile.png"><img class="size-medium wp-image-1831 " title="4shapefile" src="/i/2012/08/4shapefile-300x88.png" alt="" width="300" height="88" /></a>
+<figcaption> a. Shapefile</figcaption>
+</figure>
+
+<p>a. A shapefile is a multipart data storage format for geospatial data. The easiest way to understand the various files which comprise a shapefile is to navigate to the location of a shapefile on your hard drive using Windows Explorer. Here is an example of a shapefile which represents roads in the City of Charlottesville (TIGER Shapefile, US Census Bureau). As you can see, a shapefile consists of several file types (at least .shp, .shx, and .dbf) which store information related to feature geometry, attributes, and map projection, or coordinate system.</p>
+
+<figure>
+	<a href="/i/2012/08/67Zip.png"><img class="size-medium wp-image-1852" title="67Zip" src="/i/2012/08/67Zip-300x88.png" alt="" width="300" height="88" /></a>
+<figcaption> b. 7 Zip</figcaption>
+</figure>
+
+<p>b. In order to add a shapefile to your ArcGIS.com webmap use a program such as <a title="7 Zip" href="http://www.7-zip.org/">7-Zip</a> to zip your shapefile. Ensure that all of the files which constitute your shapefile are placed on the root of the zipped folder. If you do not have a shapefile, try downloading a TIGER shapefile from the US Census Bureau: <a title="shapefile" href="http://www.census.gov/geo/www/tiger/tgrshp2010/tgrshp2010.html">http://www.census.gov/geo/www/tiger/tgrshp2010/tgrshp2010.html</a> or a local government website. You may have to clip it first if the shapefile contains over 1000 features (search the <a title="ArcGIS Resource Center" href="http://resources.arcgis.com/en/home/">ArcGIS Resource Center </a>to learn more about geoprocessing tools such as ‘Clip’).
+Alternatively, you can drag and drop .csv, .txt, or .gpx files directly into your ArcGIS.com webmap from your computer. Your .csv, or .txt file must include either latitude and longitude fields, or address fields such as Address, City, State, Zipcode for ArcGIS.com to geocode your data and display it on the map. A .csv file may contain the addresses of local businesses, fire stations, or any other point of interest. A .gpx file (GPS Exchange Format) allows you to display data captured using a GPS device.</p>
+
+<figure>
+	<a href="/i/2012/08/5AddData.png"><img class="size-medium wp-image-1850 " title="5AddData" src="/i/2012/08/5AddData-300x195.png" alt="" width="300" height="195" /></a>
+<figcaption> c. Add Data</figcaption>
+</figure>
+
+<p>c. Now you’re ready to add data. Click the ‘Add’ tab located in the upper left corner of your map, and select ‘Add Layer from File’. Navigate to the location of your zipped shapefile and select it. You should see your shapefile displayed in your webmap.</p>
+
+<figure><a href="/i/2012/08/7MapWithCounties.png"><img class="size-medium wp-image-1856" title="7MapWithCounties" src="/i/2012/08/7MapWithCounties-300x170.png" alt="" width="300" height="170" /></a>
+<figcaption> d. Map with counties</figcaption>
+</figure>
+
+<p>d. Now, remember to save your map- click on the ‘Save’ link located directly above your new webmap. At the right you will see my county boundaries shapefile in my webmap.</p>
+
+<p>Explore ArcGIS.com to discover additional functionality you might like, such as adding points and features.</p>
+</li>
+	<li>
+		<h2>View and Embed Webmap</h2>
+
+<figure><a href="/i/2012/08/10sharewebmap.png"><img class="size-medium wp-image-1877" title="10sharewebmap" src="/i/2012/08/10sharewebmap-300x152.png" alt="" width="300" height="152" /></a>
+<figcaption> a. Share webmap</figcaption>
+</figure>
+
+<p>a. You may want to share your webmap with others. In this case, ArcGIS.com makes it easy to embed your webmap in your blog, or personal website. In ArcGIS.com, open your newly created webmap. Click the ‘Share’ tab.</p>
+
+<figure><a href="/i/2012/08/11embed.png"><img class="size-medium wp-image-1878" title="11embed" src="/i/2012/08/11embed-300x183.png" alt="" width="300" height="183" /></a>
+<figcaption> b. Embed in Website</figcaption>
+</figure>
+
+<p>b. In the dialog that appears, click ‘Embed in Website’.</p>
+
+<figure><a href="/i/2012/08/12html.png"><img class="size-medium wp-image-1879" title="12html" src="/i/2012/08/12html-300x127.png" alt="" width="300" height="127" /></a>
+<figcaption> c. Copy HTML</figcaption>
+</figure>
+
+<p>c. Copy the HTML and navigate to your website or blog. If you use a popular blog service like Blogger, compose a post and select ‘HTML’. Paste the code into your post where you’d like your map to display.</p>
+<p>d. View your blog with your newly embedded ArcGIS.com webmap.</p>
+
+</li>
+	<li>
+		<h2>Optional:Install Smartphone App</h2>
+
+<figure><a href="/i/2012/08/8FindMaps.png"><img class="size-medium wp-image-1865" title="8FindMaps" src="/i/2012/08/8FindMaps-300x226.png" alt="" width="300" height="226" /></a>
+<figcaption> a. Find Maps</figcaption>
+</figure>
+
+<p>a. This example uses the iPhone but the process is similar for other smartphones. If you have an iPhone, go to the App Store and enter ‘ESRI’ in the search box. Download the free ESRI ArcGIS app. Open the app, and select the map icon. Select ‘Gallery’ and then click the search icon at the top of the Gallery page.</p>
+
+<figure><a href="/i/2012/08/9onlinemap.png"><img class="size-medium wp-image-1867" title="9onlinemap" src="/i/2012/08/9onlinemap-202x300.png" alt="" width="202" height="300" /></a>
+<figcaption> b. Webmap</figcaption>
+</figure>
+
+<p>b. Enter the name of your webmap and scroll until you find it. Select and open your webmap. Explore the application for additional functionality you might like, such as measuring distances.</p>
+</li>
+</ol>
+
+<h2>Learn more</h2>
+<ul>
+	<li><a href="http://resources.arcgis.com/en/help/main/10.1/#/Welcome_to_ArcGIS_com_Help/01w100000002000000/">ArcGIS.com Help</a></li>
+	<li><a href="http://www.arcgis.com/home/gallery.html">ArcGIS.com Map Gallery</a></li>
+</ul>
+</div>

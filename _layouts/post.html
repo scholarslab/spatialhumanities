@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<article>
+  <header>
+    <p class="kicker">{{ page.date | date: "%d %B %Y" }}</p>
+    <h1>{{ page.title }}</h1>
+    <ul class="meta">
+      {% if page.difficulty %}<li>Difficulty: <em>{{ page.difficulty | capitalize }}</em></li> {% endif %}
+      {% if page.requirements %}<li>Requirements: <em>{{ page.requirements }}</em></li> {% endif %}
+      {% if page.optional %}<li>Optional: <em>{{ page.optional }}</em></li> {% endif %}
+    </ul>
+    {{ page.excerpt }}
+{{ content }}

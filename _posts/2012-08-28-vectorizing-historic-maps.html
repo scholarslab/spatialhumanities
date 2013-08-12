@@ -1,0 +1,155 @@
+---
+layout: post
+bodyclass: stepbystep
+title: Vectorizing Historic Maps
+tags:
+- ArcGIS
+- digitizing
+- georeferencing
+- GIS
+- history
+- map
+- stepbystep
+difficulty: moderate
+requirements: ArcGIS 10 or higher
+excerpt: '<p>You have finished georeferencing a historic map (see <a href="http://spatial.scholarslab.org/stepbystep/making-historic-maps-spatial-georeferencing/">Georeferencing – making historical maps spatial</a>) and have created a map image which you can now overlay on top of other GIS layers. But is there anything else that you can do with your georeferenced map image? Yes, you can create point, line or polygon features from items of interest on the georeferenced map. This process is called vectorizing and it enables you to display just those features on other maps and to analyze them with GIS software. These features could be archaeological sites, battlefields, old trails, historic boundaries, etc. It is important, however, to be aware that the accuracy of the vector data created depends both on the quality of the original map and the georeferencing. Historic maps that are very distorted by the georeferencing process are not a good source for the creation of vector features. In fact the map we&#8217;ll use in this tutorial shows a good deal of distortion, so the location of vectors created from it should be confirmed by other reference sources.</p>
+<p>In this tutorial we will be digitizing ancestral Haida villages on the Queen Charlotte Islands (also known as Haida Gwai) from an 1878 geological map that has already been georeferenced. The villages will be created as a point shapefile; however, similar results can be attained by creating a new point feature class within a file geodatabase (see <a href="http://spatial.scholarslab.org/stepbystep/creating-gis-datasets-from-historic-maps/">Creating GIS Datasets from Historic Maps)</a>.</p>'
+---
+
+<h2>Steps</h2>
+<ol>
+	<li>
+
+<figure><a href="/i/2012/08/1AddDataFinal.png"><img class="size-thumbnail wp-image-205 " title="Add Data Button" src="/i/2012/08/1AddDataFinal.png" alt="Add Data Button" width="150" height="150" /></a>
+<figcaption> Selecting the georeferenced image to add to ArcMap 10</figcaption>
+</figure>
+
+<p><strong>Add</strong> a georeferenced map or image to ArcMap. For this exercise add <em>Haida.jpg</em>. Download the georeferenced map in a .zip file from <a href='/i/2012/08/Haida.zip'>/i/2012/08/Haida.zip</a> (15MB) and save to your computer. <br><br>The zip file format reduces file size and preserves folder structure but the contents must be extracted before use. <br><br>Extract the zip file contents to your computer using Windows Explorer, WinZip, or another program. <br><br>In ArcMap use the "Add Data" button to browse to the folder where you extracted the zip contents and highlight the file by single clicking Haida.jpg and then click <strong>Add</strong>.</p>
+
+
+<figure><a href="/i/2012/08/3BigMap.jpg"><img class="size-thumbnail wp-image-207" title="Map of Haida Villages" src="/i/2012/08/3BigMap.jpg" alt="Map of Haida Villages" width="150" height="150" /></a>
+<figcaption> Map of Haida Villages</figcaption>
+</figure>
+
+</li>
+	<li>
+
+<figure>
+	<a href="/i/2012/08/4CatalogWindow.jpg"><img class="size-thumbnail wp-image-207" title="Catalog Window" src="/i/2012/08/4CatalogWindow.jpg" alt="Catalog Window" width="150" height="150" /></a>
+<figcaption> Catalog Window</figcaption>
+</figure>
+
+<p>Open the <strong>Catalog window</strong>.</p>
+
+</li>
+	<li>
+
+<figure><a href="/i/2012/08/5CatalogNewShapefile.jpg"><img class="size-thumbnail wp-image-169" title="New Shape File" src="/i/2012/08/5CatalogNewShapefile.jpg" alt="" width="150" height="150" /></a>
+<figcaption> New Shape File</figcaption>
+</figure>
+
+<p>Browse to your desired folder location and create a new point data set by right-clicking on that folder and selecting New &gt; Shapefile. Give it a name and <strong>Edit</strong> the coordinate system. The easiest option is to simply import the coordinate system from the georeferenced map. Click <strong>Add</strong> and then <strong>OK</strong> twice.
+</p>
+
+
+<figure><a href="/i/2012/08/6CreateNewShapefile.jpg"><img class="size-thumbnail wp-image-169" title="Create New Shape File Dialog" src="/i/2012/08/6CreateNewShapefile.jpg" alt="" width="150" height="150" /></a>
+<figcaption> Create New Shape File Dialog</figcaption>
+</figure>
+
+
+
+<figure><a href="/i/2012/08/7SpatialReferenceProperties.png"><img class="size-thumbnail wp-image-169" title="Spatial Reference Properties" src="/i/2012/08/7SpatialReferenceProperties.png" alt="" width="150" height="150" /></a>
+<figcaption> Spatial Reference Properties</figcaption>
+</figure>
+
+
+
+<figure><a href="/i/2012/08/8BrowseForDataset.jpg"><img class="size-thumbnail wp-image-169" title="Browse for Dataset" src="/i/2012/08/8BrowseForDataset.jpg" alt="" width="150" height="150" /></a>
+<figcaption> Browse for Dataset</figcaption>
+</figure>
+
+
+
+<p>The new point shapefile will now appear in the Table of Contents, but nothing will appear on the map because the new data set has not yet had information added into it.</p>
+<figure><a href="/i/2012/08/9TableOfContents.jpg"><img class="size-thumbnail wp-image-169" title="Updated Table of Contents" src="/i/2012/08/9TableOfContents.jpg" alt="" width="150" height="150" /></a>
+<figcaption> Updated Table of Contents</figcaption>
+</figure>
+</li>
+	<li>
+
+<figure><a href="/i/2012/08/10TableOfContentsOpenAttributeTable.jpg"><img class="size-thumbnail wp-image-207" title="Table of Contest Open Attribute Table" src="/i/2012/08/10TableOfContentsOpenAttributeTable.jpg" alt="Table of Contents Open Attribute Table" width="150" height="150" /></a>
+<figcaption> Table of Contents Open Attribute Table</figcaption>
+</figure>
+
+<p>Open the attribute table for the newly created point shapefile and add a new <strong>Text</strong> field called <em>Name</em>. As you can see the table is empty. Leave the table open.</p>
+
+
+<figure><a href="/i/2012/08/11TableAddField.jpg"><img class="size-thumbnail wp-image-207" title="Table Add Field" src="/i/2012/08/11TableAddField.jpg" alt="Table Add Field" width="150" height="150" /></a>
+<figcaption> Table Add Field</figcaption>
+</figure>
+
+
+<figure><a href="/i/2012/08/12AddField.jpg"><img class="size-thumbnail wp-image-207" title="Table Add Field" src="/i/2012/08/12AddField.jpg" alt="Table Add Field" width="150" height="150" /></a>
+<figcaption> Table Add Field</figcaption>
+</figure>
+
+</li>
+	<li>
+
+<figure><a href="/i/2012/08/13Customize.jpg"><img class="size-thumbnail wp-image-207" title="Editor Toolbar" src="/i/2012/08/13Customize.jpg" alt="Editor Toolbar" width="150" height="150" /></a>
+<figcaption> Editor Toolbar</figcaption>
+</figure>
+
+<p>If not already present within your ArcMap window, turn on the <strong>Editor</strong> toolbar and then select <strong>Start Editing</strong> from the toolbar.</p>
+
+<figure><a href="/i/2012/08/14StartEditing.jpg"><img class="size-thumbnail wp-image-207" title="Start Editing" src="/i/2012/08/14StartEditing.jpg" alt="Start Editing" width="150" height="150" /></a>
+<figcaption> Start Editing</figcaption>
+</figure>
+
+
+</li>
+	<li>
+
+<figure><a href="/i/2012/08/15CreateFeatures.jpg"><img class="size-thumbnail wp-image-207" title="Create Features" src="/i/2012/08/15CreateFeatures.jpg" alt="Create Features" width="150" height="150" /></a>
+<figcaption> Create Features</figcaption>
+</figure>
+
+<p>We can now start the process of adding the features that we want to digitize. Zoom into the first feature that you want to add to your new layer. In the <strong>Create Features</strong> box that has opened, select your empty shapefile and then at the bottom of the section underneath that, select <strong>Point</strong>.</p>
+
+
+<figure><a href="/i/2012/08/16ConstructionTools.jpg"><img class="size-thumbnail wp-image-207" title="Construction Tools" src="/i/2012/08/16ConstructionTools.jpg" alt="Construction Tools" width="150" height="150" /></a>
+<figcaption> Construction Tools</figcaption>
+</figure>
+
+
+<p>With the arrow tool that appears you can now create your point features and add a name to the new feature in the open attribute table.</p>
+
+<figure><a href="/i/2012/08/17MapCreateFeature.png"><img class="size-thumbnail wp-image-207" title="Create Feature Tool" src="/i/2012/08/17MapCreateFeature.png" alt="Create Feature Tool" width="150" height="150" /></a>
+<figcaption> Create Feature Tool</figcaption>
+</figure>
+
+
+<figure><a href="/i/2012/08/18MapTable.jpg"><img class="size-thumbnail wp-image-207" title="Map Table" src="/i/2012/08/18MapTable.jpg" alt="Map Table" width="150" height="150" /></a>
+<figcaption> Type Feature Name</figcaption>
+</figure>
+
+</li>
+	<li>
+
+<figure><a href="/i/2012/08/19HaidaVillages.jpg"><img class="size-thumbnail wp-image-207" title="Haida Villages" src="/i/2012/08/19HaidaVillages.jpg" alt="Haida Villages" width="150" height="150" /></a>
+<figcaption> Haida Villages</figcaption>
+</figure>
+
+<p>After adding all the features, stop editing and save your edits. You have now finished creating a point feature shapefile. This new layer can be added to any kind of GIS map (basemap, thematic map, digital elevation model, imagery) and the points can be labeled. All sorts of spatial queries and analyses can now be performed using these point features: buffers, distance measurements, shortest paths, etc.</p>
+
+<p>Finished Product: Vectorized points on a topographic map</p>
+
+</li>
+</ol>
+
+<h2>Learn more</h2>
+<ul>
+	<li><a href="http://www.davidrumsey.com/gis/ch01.pdf">Historical Maps in GIS</a> by David Rumsey and Meredith Williams</li>
+	<li><a href="http://soa.utexas.edu/crp/gis/arcgis_tips/new_shape_file.html">“Creating a new shape file in ArcGIS,"</a> Community and Regional Planning Program, University of Texas at Austin</li>
+	<li><a href="http://help.arcgis.com/en/arcgisdesktop/10.0/pdf/arcscan-tutorial.pdf">ArcScan</a> – this ArcGIS extension allows you to automate the vectorization process for lines and polygons.</li>
+</ul>

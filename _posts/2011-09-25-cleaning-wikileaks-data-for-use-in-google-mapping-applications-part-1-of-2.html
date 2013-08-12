@@ -1,0 +1,73 @@
+---
+layout: post
+bodyclass: stepbystep
+title: Cleaning Wikileaks Data for Use in Google Mapping Applications (Part 1 of 2)
+tags:
+- Google
+- map
+- stepbystep
+difficulty: moderate
+requirements: 'A .7z file archiver for (<a title="7-zip" href="http://www.7-zip.org/">Windows</a>) or (<a title="7-zip Mac" href="http://www.macupdate.com/app/mac/19139/ez7z">Mac</a>) and Microsoft Excel.'
+excerpt: '<p>Over the past year, <a title="Wikileaks" href="http://www.wikileaks.ch/">Wikileaks</a>’ release of large troves of classified documents, reports, cables, and other information has demonstrated the increasing importance of <a title="data-driven journalism" href="http://en.wikipedia.org/wiki/Data_driven_journalism">data-driven journalism</a>, a form of journalism in which large datasets are filtered and analyzed to produce new stories and infographics, a many of which have a geospatial bent.</p>
+<p>In releasing information this way, <a title="Wikileaks" href="http://www.wikileaks.ch/">Wikileaks</a> has altered the way the general public can access and understand news reports by making available the sources that many of the major news outlets have been using to drive their coverage. These releases have also demonstrated that datasets must be clean and contextualized if they are to be properly understood.</p>
+<p>Indeed, although flashy interactive maps and other online applications get a great deal of press, over 80% of the work involved in creating these data-driven applications involves cleaning and parsing the data informing the application so that it can be understood by both computers and users.</p>
+<p>This tutorial demonstrates how to download, decompress, parse, and clean Wikileaks data with an eye towards using the data in other web applications.  This type of work is not glamorous, and can sometimes be rather mind-numbing, but the cleaning and contextualizing of datasets is essential work for any data-heavy visualization.</p>
+<p>Note: This is part 1 of a 2-part tutorial.  In the <a title="Part 2 of 2" href="http://spatial.scholarslab.org/?p=1392">second part</a>, we will import the dataset you produce here into Google Fusion tables and then visualize it as a Google map.</p>'
+---
+
+<h2>Steps</h2>
+<ol>
+<li>
+<figure>
+	<a href="/i/2011/08/Afghan-War-Diary2.png">
+		<img class="size-thumbnail wp-image-205" title="Wikileaks" src="/i/2011/08/Afghan-War-Diary2.png" alt="Wikileaks" width="150" height="150" /></a>
+	<figcaption>Choose the download option &quot;All entries, CSV format&quot;.</figcaption>
+</figure>
+
+<p>Download the Data</p>
+<p>Given how often the main Wikileaks site (and how often most of the many mirrored versions of the Wikileaks site are also down), getting the data is sometimes the most difficult step.  The Afghan War Diary data, however, is usually accessible via the <a title="wiki of Wikileaks" href="http://mirror.wikileaks.info/">mirror.wikileaks.info</a> page, which currently serves as the wiki of Wikileaks.</p>
+<p>The main page for the Afghan War Diary in the wiki is here: <a title="Afghan War Diary" href="http://mirror.wikileaks.info/wiki/Afghan_War_Diary,_2004-2010/">http://mirror.wikileaks.info/wiki/Afghan_War_Diary,_2004-2010/</a></p>
+<p>Go to the page, and then download the data in .csv (comma-separated values) format.  This should be the second option listed in the list at the bottom of the page.</p>
+<p>Note:  If for some reason these sites are down and you’re having problems accessing the dataset, try using this public Google Fusion Table, <a title="Google Fusion Table" href="http://www.google.com/fusiontables/DataSource?dsrcid=224453&amp;search=&amp;cd=10">“Wikileaks Afghan War Diary, 2004-2010.”</a>  First click on the link and then click on File / Export via the menu at the top left.  This should lead to your downloading the entire dataset in a .csv format.  If you take this step, you may skip Step 2.</li>
+<li>
+<p>[caption id="attachment_207" align="alignnone" width="150" caption=""]<a href="/i/2011/09/7zipwin.png"><img class="size-thumbnail wp-image-207      " title="7zip" src="/i/2011/09/7zipwin.png" alt="7zip" width="150" height="150" /></a>
+<figcaption></figcaption>
+</figure></p>
+<p>Decompress the Data</p>
+<p>But wait, the file you just downloaded isn’t a .csv file, it’s a 7z file.</p>
+<p>What is a .7z file?</p>
+<p>It is a compressed file format much like a .zip file.  You will need to download special software to extract data from this .7z file.</p>
+<p>Windows users can use the <a title="7-zip" href="http://www.7-zip.org/">7-zip site </a>to download their own file archiver.</p>
+<p>Mac users will have to use a different program, as the 7-zip file archiver is only built for windows.  <a title="7-zip Mac" href="http://www.macupdate.com/app/mac/19139/ez7z">Ez7z </a>seems to be the preferred archiver for the Mac user.  Mac users may need to ensure that the compressed filename ends in .7z.</p>
+<p>So go ahead and download an archiver, and then use it to extract the .csv file.</li>
+<li>
+<p>[caption id="attachment_169" align="alignnone" width="150" caption="Use the list to the left and the “Text to Columns” option in Excel to create your column headings."]<a href="/i/2011/09/understandthedata.png"><img class="size-thumbnail wp-image-169  " title="Understand The Data" src="/i/2011/09/understandthedata.png" alt="Understand The Data" width="150" height="150" /></a>
+<figcaption></figcaption>
+</figure></p>
+<p>Understand the Data</p>
+<p>Like most data, the Wikileaks .csv file needs some clean up.  First of all, the columns have no titles, and this lack of documentation/metadata makes some of the entries unintelligible on first glance.  Luckily, this dataset has been uploaded and published in a variety of different places, so simply copying a string from one of the more arcane cells, such as the first cell (“D92871CA-D217-4124-B8FB-89B9A2CFFCB4“), and then Googling that string will often lead you to a site that documents the war logs.</p>
+<p>One site I’ve found particularly helpful is here: <a title="Afghan War Leak" href="http://afghanwarleak.org/">http://afghanwarleak.org/</a>.  From this site we can look at individual events, such as the event connected to the string above, to get the categories of information:  <a title="Afghan War Leak" href="http://afghanwarleak.org/war_events/D92871CA-D217-4124-B8FB-89B9A2CFFCB4">http://afghanwarleak.org/war_events/D92871CA-D217-4124-B8FB-89B9A2CFFCB4</a></p>
+<p>Using a site like this, we can deduce that the columns correspond to the following fields (in .csv format):</p>
+<p><code>Report Key,Date,Type,Category,Tracking Number,Title,Summary,Region,Attack On,Complex Attack,Reporting Unit,Unit Name,Type of Unit,Friendly WIA,Friendly KIA,Host nation WIA,Host nation KIA,Civilian WIA,Civilian KIA,Enemy WIA,Enemy KIA,Enemy Detained,MGRS,Latitude,Longitude,Originator Group,Updated by Group,Ccir,Sigact,Affiliation,D Color,Classification<br />
+</code><br />
+(If you’d like to import these into your excel sheet, insert a blank row, then paste this list into the first cell.  After pasting, select the “Text toColumns” option in the “Data” menu and separate the text via each “comma” into separate columns.  Here’s a <a title="Text to Columns" href="http://www.youtube.com/watch?v=neDUOYk8hyU">tutorial on that process</a>.)</p>
+<p>Now that we know what information is listed in the columns, we will also benefit from understanding the acronyms used within the columns. <em>The Guardian</em> has published a handy glossary of these terms here: <a title="Guardian" href="http://www.guardian.co.uk/world/datablog/2010/jul/25/wikileaks-afghanistan-war-logs-glossary">http://www.guardian.co.uk/world/datablog/2010/jul/25/wikileaks-afghanistan-war-logs-glossary</a>.</li>
+<li>
+<p>[caption id="attachment_169" align="alignnone" width="150" caption="That’s a big Excel sheet! Let’s make it more manageable."]<a href="/i/2011/09/parsethedata.png"><img class="size-thumbnail wp-image-169  " title="Parse the Data" src="/i/2011/09/parsethedata.png" alt="" width="150" height="150" /></a>
+<figcaption></figcaption>
+</figure></p>
+<p>Parse the Data</p>
+<p>Now that we understand the data fields and have a reference sheet to decipher what certain acronyms mean, we can go ahead and determine what aspect of the spreadsheet we’d like to visualize.</p>
+<p>While visualizing the 76000+ events currently listed in the .csv file might give one a good sense of the overall picture of events in Afghanistan, limiting the visualization to one type of event might help you and your audience to see something more specific and more understandable.  So let’s limit our dataset to only those events where enemies were detained.</p>
+<p>First, sort your excel sheet by the “Enemies Detained” field, and then copy and paste all rows listing events where at least 1 enemy was detained (i.e. all cells that are greater or equal to 1) into a new Excel sheet.  This should leave you with about 2373 rows of information, or 2372 events and one title row.</p>
+<p>Save this file as a .csv spreadsheet (choose save as in excel, then scroll down in the “Save as Type” dropdown menu until you see the .csv option).  We’re saving it as a .csv file rather than an Excel file because the Google Fusion tables work better with this simpler type of file.</li>
+</ol>
+</div>
+<h2>Learn More</h2>
+<p class="closing">Congrats!  You’ve prepared your data and finished Part 1 of this tutorial.  Now let’s move on to <a title="Part 2 of 2" href="http://spatial.scholarslab.org/?p=1392">Part 2</a> and create a geospatial visualization using Google Fusion Tables.</p>
+<div class="closing">
+<ul>
+<li><a title="Part 2 of 2" href="http://spatial.scholarslab.org/?p=1392">Mapping Wikileaks Afghan War Diary Data Using Google Fusion Tables (Part 2 of 2)</a></li>
+</ul>
+</div>
+<p></p>

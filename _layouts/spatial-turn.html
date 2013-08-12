@@ -1,0 +1,22 @@
+---
+layout: default
+bodyclass: spatial-turn
+---
+
+<article>
+  <header>
+    <h1>{{ page.title }}</h1>
+  </header>
+  <div class="entry">
+    {{ content }}
+  </div>
+  <footer>
+    <ul>
+      {% for spatialpage in site.pages %}
+      {% if spatialpage.url contains '/spatial-turn/the-spatial-turn' %}
+      <li{% if page.url == spatialpage.url %} class="current"{% endif %}><a href="{{spatialpage.url}}">{{ spatialpage.title }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </footer>
+</article>

@@ -1,0 +1,248 @@
+---
+layout: post
+bodyclass: stepbystep
+title: Creating GIS Datasets from Historic Maps
+tags:
+- ArcGIS
+- digitizing
+- georeferencing
+- GIS
+- history
+- stepbystep
+difficulty: moderate
+requirements: ArcGIS 10 or higher; Internet connection
+excerpt: '<p>This tutorial will teach you to extract features from georeferenced maps and store them in a geodatabase for use in ArcGIS.</p>
+<p>Here are the basic steps we will go through in this tutorial:</p>
+<ol>
+<li>Download the ArcMap project containing the georeferenced map and extract it a local drive.</li>
+<li>Create a new file geodatabase for storing the spatial data.</li>
+<li>Create new layers (feature classes) for each theme of data being created.</li>
+<li>Digitize features from the map using ArcGIS.</li>
+</ol>
+<p>Assumptions:</p>
+<ul>
+<li>You have basic computer skills and understand Windows directory structures.</li>
+<li>You have a good internet connection.</li>
+<li>You have ArcGIS 10 working on your computer.</li>
+</ul>
+<p>The map used in this exercise is scanned (and used with permission) from <em>“Forward is the Motto of Today” Street Railways in Charlottesville, Virginia 1866 – 1936</em> which is a detailed history of Charlottesville streetcar system.</p>
+<p>We will create three layers – routes, system features, and city limits – from the map.  We will add name and type attributes to the system features and routes layers.</p>'
+---
+
+<h2>Steps</h2>
+<ol>
+	<li>
+
+<h3>Download, Extract and Open</h3>
+
+<p>a.  Download the ArcMap project in a zip file named creatingGISdata.zip from<a title="Download dataset" href="/i/2012/02/cvilleTrolley1.zip"> /i/2012/02/cvilleTrolley1.zip</a> (32MB) and save to your local drive.  A zip file is a compression format that reduces file size and preserves directory structure.  More information on Zip files <a title="Zip files at Wikipedia" href="http://en.wikipedia.org/wiki/ZIP_%28file_format%29">here</a>.</p>
+<figure>
+	<a href="/i/2012/02/TrolleyMap.png"><img class="size-thumbnail wp-image-205" title="Cville Trolley" src="/i/2012/02/TrolleyMap.png" alt="Cville Trolley" width="150" height="150" /></a>
+<figcaption>Trolley Map</figcaption>
+</figure>
+<p>b.  Extract the zip file to a local drive using WinZip, Windows Explorer or another program.</p>
+
+<p>c.  You should now find a directory called cvilleTrolley on your local drive in the location you designated in the last step.</p>
+
+<p>NOTE:  If you do not extract the zip file to your local drive, the ArcMap project will not work properly because the directory structure required for geodatabases and ArcMap is not available.</p>
+
+<p>d.  Browse into the cvilleTrolley directory and double-click cvilleTrolleyMap.mxd.  This will launch ArcMap with cvilleTrolleyMap open.  Alternatively, you can start ArcMap using the Start menu and then browse to cvilleTrolleyMap.mxd by clicking File &gt; Open….  You should see something similar to the image shown here.</p>
+
+<figure>
+	<a href="/i/2012/02/Step11.png"><img class="size-thumbnail wp-image-205    " title="Cville Trolley" src="/i/2012/02/Step11.png" alt="Cville Trolley" width="150" height="150" /></a>
+<figcaption>Trolley Map in ArcGIS</figcaption>
+</figure>
+</li>
+	<li>
+
+<figure>
+	<a href="/i/2012/02/Step2.png"><img class="size-thumbnail wp-image-207  " title="Create File Geodatabase" src="/i/2012/02/Step2.png" alt="Create File Geodatabase" width="150" height="150" /></a>
+<figcaption>Create File Geodatabase</figcaption>
+</figure>
+
+<h3>Create a Geodatabase and Spatial Layers</h3>
+
+<p>A geodatabase is just what it sounds like, a place to store spatial data.  There are several types of geodatabase; we will be using a file geodatabase.  More on geodatabases <a title="Geodatabase help" href="http://www.esri.com/software/arcgis/geodatabase/index.html">here.</a></p>
+
+<p>a.  Launch ArcCatalog either by clicking the Catalog tab on the right side of your ArcMap window or clicking the Catalog Window button near the top of the ArcMap window in the Standard toolbar.</p>
+
+<p>b.  Browse to the directory where you extracted your ArcMap project.</p>
+
+<p>NOTE: ArcCatalog emphasizes the use of links to working directories.  The use of the list of “shortcuts” is why you may not see your directory in the tree in ArcCatalog.   Once set up, ArcCatalog’s links can be very helpful but are often frustrating for novice users in the beginning.  To create a direct link to your working directory, click the Connect to Folder button and browse to your directory through the Windows directory tree.  You will only have to do this once; ArcGIS remembers the links and adds it to the list for next time.</p>
+
+<p>c.  In the Catalog pane, right-click on the cvilleTrolley directory &gt; New &gt; File Geodatabase.</p>
+
+<p>d.  Give your new file geodatabase a meaningful name like cvilleTrolley.gdb.</p>
+
+<p>e.  Right-click on your new database &gt; New &gt; Feature Dataset….</p>
+
+<p>NOTE:  A Feature Dataset is actually a collection of spatial layers (feature classes) grouped for a purpose.  Maybe they are all the same theme like the roads from four adjacent counties or different themes of the same area.  Feature Datasets have projections.  Therefore, all the feature classes within must be in the same projection.  When you add a Feature Dataset using the Add Data function, ArcGIS adds all of the feature classes within it to the Table of Contents (TOC).   More on feature datasets and projections <a title="ArcGIS Help" href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#//002300000001000000.htm">here</a>.</p>
+
+<p>f.  Name it cvilleTrolleyDatasets and click Next.</p>
+
+<p>g.  We want to use the same projection as our georeferenced map.  Click Import….</p>
+
+<p>h.  Select 1920mapWGS.tif, click Add.</p>
+
+<p>i.  Click Next.  Click Next again to skip Vertical Coordinate Systems.  Click Finish to accept defaults on other settings.</p>
+</li>
+	<li>
+
+<figure>
+	<a href="/i/2012/02/Step3a.png"><img class="size-thumbnail wp-image-169    " title="Adding a new attribute to Routes" src="/i/2012/02/Step3a.png" alt="" width="150" height="150" /></a>
+<figcaption>Adding the Field Name attribute to Routes (step 3.h)</figcaption>
+</figure>
+
+<p>Add the feature classes.  There will be three:</p>
+<ol>
+<li>CityLimits – a polygon layer</li>
+<li>Routes – a line layer</li>
+<li>SystemFeatures – a point layer</li>
+</ol>
+<p>a.  Right-click on  cvilleTrolleyDatasets &gt; New &gt; Feature Class….</p>
+
+<p>b.  In the New Feature Class dialog, add CityLimits for Name.  Accept default of Polygon Features for Type.  Click Next.</p>
+
+<p>c.  Click Next to accept Default for Configuration Keyword.</p>
+
+<p>d.  Click Finish.</p>
+
+<p>e.  Repeat for Routes.  Right-click on cvilleTrolleyDatasets &gt; New &gt; Feature Class….</p>
+
+<p>f.  In the New Feature Class dialog, add Routes for Name.  Select Line Features for Type. Click Next.</p>
+
+<p>g.  Click Next to accept Default for Configuration Keyword.</p>
+
+<p>We want to store the name of the line in the Routes layer using attributes.  We will add the field by entering a Field Name and selecting the Data Type.</p>
+
+<figure>
+	<a href="/i/2012/02/Step3b.png"><img class="size-thumbnail wp-image-169  " title="Table of Contents" src="/i/2012/02/Step3b.png" alt="" width="150" height="150" /></a>
+<figcaption>Table of Contents (step 3.l)</figcaption>
+</figure>
+
+<p>h.  Type Name in next available row under Field Name and select Text as Data Type.</p>
+
+<p>i.  Hit Finish.</p>
+
+<p>j.  Now, go back and make another feature class named SystemFeatures of Type Point Features with two new fields Name (Text) and Type (Text).</p>
+
+<p>k. The tree for your project directory should now look like the the image shown here.</p>
+
+<figure>
+	<a href="/i/2012/02/Step3.png"><img class="size-thumbnail wp-image-169  " title="Project Directory" src="/i/2012/02/Step3.png" alt="" width="150" height="150" /></a>
+<figcaption>Project Directory (step 3.k)</figcaption>
+</figure>
+
+<p>l. NOTE: ArcMap may have also loaded the new layers into your TOC.  If not, you can drag and drop the whole dataset in the TOC.</p>
+
+</li>
+	<li>
+
+<h3>Creating Features</h3>
+
+<li>To add features to the feature classes we need to use ArcEditor.  To begin using the editor, we must begin an edit session.  An edit session is a safe place to work because you have to commit any changes before the feature class is changed.  This is good because if you make a bad mistake, you can always back out of a session with no harm done.  The flip side is that if you don’t commit your changes, you have lost all your work.  More on editing <a title="Editing in ArcGIS 10" href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/What_is_editing/001t00000001000000/">here</a>.</li>
+
+<li>We are also going to use a template to help us fill in some of the fields in a feature attribute table.  Templates define where new features are stored, default attribute values, and default tools for creating features.  When we start an edit session, ArcMap creates default templates for each layer if none already exist.  We can also modify existing templates and create new templates.  First, we want to categorize the types of features in the SystemFeatures layer and have ArcMap fill in the feature type in the attribute table.</li>
+
+<li>a.  Right-click on SystemFeatures in the Table Of Contents (TOC) &gt; Properties &gt; Symbology.</li>
+
+<li>b.  Click Categories.</li>
+
+<li>c.  Select Type from Value Field.</li>
+
+<li>e.  Click the Add Values… button.</li>
+
+<li>f.  In the New Value area of the Add Values dialog box, enter Turn-around and hit Add to List.</li>
+
+<li>g.  Do the same for Pass-by, Car Barn, Union Station, and C&amp;O Station. Make sure all the values in the list are selected (highlighted), then click OK.  Feel free to change the symbols by adjusting the color ramp and/or right-clicking on individual values and selecting Properties for Selected Symbols.</li>
+
+<figure>
+	<a href="/i/2012/02/Step4gAddValues.png"><img class="size-thumbnail wp-image-169  " title="Hypercities" src="/i/2012/02/Step4gAddValues.png" alt="" width="150" height="150" /></a>
+<figcaption>Adding Symbology Categories (step 4g)</figcaption>
+</figure>
+
+<p>h.  Hit OK to dismiss Layer Properties.</p>
+
+<p>Notice your TOC has now changed to reflect your newly-created symbology.</p>
+
+<p>i.  Load the Editor toolbar by clicking Customize &gt; Toolbars &gt; Editor.</p>
+
+<p>j.  Start an edit session by clicking on the Editor toolbar Editor &gt; Start Editing.  This launches the Create Features pane showing the default templates for each layer.</p>
+
+<p>k. We will start with CityLimits which is a polygon layer.  Click on the layer in the Create Features pane to highlight it.  Notice your cursor switches to a crosshair symbol.</p>
+
+<p>l. Start tracing the perimeter of the polygon making sure to double-click on the last point to end the drawing of the feature.  Since our historic map does not show the city limit boundary in the area of the map legend we must make a decision on how to proceed.  With additional research, period maps showing this part of the boundary could be found and brought into our project to trace a more accurate city limit.   Since the trolley route is our primary focus for this project we will draw a straight line boundary in this area but should note this cartographic choice in any description of this work.</p>
+
+<figure><a href="/i/2012/02/Step4lCreateCityLimit.png"><img class="size-thumbnail wp-image-169   " title="Hypercities" src="/i/2012/02/Step4lCreateCityLimit.png" alt="" width="150" height="150" /></a>
+<figcaption>Digitize City Limits Layer (step 4l)</figcaption>
+</figure>
+
+<p>m. You can either toggle off the CityLimits layer by unchecking the box next to the name in the TOC or you can change the symbology to something hollow to enable you to see through to the map.</p>
+
+<p>n. We are going to digitize three features for the Routes layer: Main St., Jefferson Park Ave (JPA), and University St. west of the Main St. and JPA intersection.</p>
+
+<p>o. Open the Attribute Table for Routes by right-clicking on the name in the TOC and selecting Open Attribute Table.</p>
+
+<p>p. Highlight Routes in Create Features.</p>
+
+<p>q. Zoom in as necessary to include the Main St. line from the fork in the west to the turn-around in the east where the Main St. line ends.</p>
+
+<figure>
+	<a href="/i/2012/02/Step4qZoomMainSt.png"><img class="size-thumbnail wp-image-169     " title="Zoom to Main St." src="/i/2012/02/Step4qZoomMainSt.png" alt="" width="150" height="150" /></a>
+<figcaption>Zoom to Main St. Route (step 4q)</figcaption>
+</figure>
+
+<p>r. Start digitizing Main St. by starting at the fork on the west end and working east.  Click to set vertices. The more points you put in a curve, the smoother it will look.  Double-click to end.</p>
+
+<p>You’ll notice the historic map shows double lines in some sections of the route where the tracks split to allow trolley cars to pass in both directions or “Pass-by”. To simplify, we will ignore these double lines and digitize only a single line. Later we’ll add point features to mark the Pass_by locations.  Digitizing multiple lines for the Pass-by features could make sense for a more detailed analysis.</p>
+
+<p>s.  Notice the Attribute Table now shows a record for the feature you just created.  Type "Main St." (no quotes) into the Name attribute, then from the Edit toolbar choose Edit / Save Edits to save your edits.</p>
+
+<figure><a href="/i/2012/02/Step4sCreateRouteMainSt.png"><img class="size-thumbnail wp-image-169    " title="Digitize Main St." src="/i/2012/02/Step4sCreateRouteMainSt.png" alt="" width="150" height="150" /></a>
+<figcaption>Digitize Main St. Route (step 4s)</figcaption>
+</figure>
+
+<p>t. Position the map to include the whole JPA leg (southern fork).  Start at the turn-around at Fry’s Spring and work back to the Main St. line.</p>
+
+<p>NOTE: Notice that your cursor snaps to the end of the Main St. line and the symbol changes when you get close enough.  This is good and ensures there are no gaps or dangles in our data.</p>
+
+<p>u. Enter in JPA for Name in Attribute Table.</p>
+
+<p>v. Repeat steps for University line.</p>
+
+<p>w. You can categories the lines by the Name attribute to get different symbology for each line.</p>
+
+<figure><a href="/i/2012/02/Step4wCreateRoutes.png"><img class="size-thumbnail wp-image-169     " title="Digitize Routes" src="/i/2012/02/Step4wCreateRoutes.png" alt="" width="150" height="150" /></a>
+<figcaption>Digitize Routes (step 4w)</figcaption>
+</figure>
+
+<p>x.  SystemFeatures are next.  Highlight Turn-around under SystemFeatures in the Create Features and click on each turn-around.  There are three.  Notice the Attribute Table for this layer.  Type is filled in automatically.  You can add a name if you wish.</p>
+
+<p>y. Repeat the steps for the pass-by, car barn, and train station features.</p>
+
+<p>z. Save your edits and close the editor.  You should know have something like the Final Map below.</p>
+
+<figure><a href="/i/2012/02/Step4zFinalMap.png"><img class="size-thumbnail wp-image-169      " title="Final Map" src="/i/2012/02/Step4zFinalMap.png" alt="" width="150" height="150" /></a>
+<figcaption>Final Map (step 4z)</figcaption>
+</figure>
+
+</li>
+</ol>
+
+<h2>Learn More</h2>
+<p>You took a historic georeferenced map and extracted three themes from it, city limits, streetcar routes, and streetcar system features.</p>
+
+<p>Specifically you learned:</p>
+<ol>
+<li>How to create a geodatabase.</li>
+<li>How to create a feature dataset.</li>
+<li>How to create a new feature class.</li>
+<li>How to create a template for a layer for editing.</li>
+<li>How to create new features – points, lines, and polygons - within a feature class using ArcEditor.</li>
+</ol>
+
+<ul>
+	<li><a href="http://www.scholarslab.org/digital-humanities/charlottesvilles-street-car-system-in-gis/">Learn more about analyzing this historic Charlottesville trolley system using US Census population counts and buffers to do quantitative analysis in GIS</a></li>
+	<li><a href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/What_is_editing/001t00000001000000/">Learn more about creating features with ArcGIS</a></li>
+	<li><a href="http://spatial.scholarslab.org/stepbystep/making-historic-maps-spatial-georeferencing/">Learn to georeference a historic map using ArcGIS</a></li>
+</ul>

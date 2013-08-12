@@ -1,0 +1,225 @@
+---
+layout: post
+bodyclass: stepbystep
+title: Joining Census Data Tables to Shapefiles in ArcMap
+categories:
+- stepbystep
+tags:
+- ArcGIS
+- census
+- GIS
+- stepbystep
+difficulty: moderate
+requirements: ArcGIS 10 or higher
+excerpt: '<p>This tutorial will demonstrate how to format census data tables from the U.S. Census Bureau&#8127;s <a title="American Factfinder" href="http://factfinder2.census.gov/faces/nav/jsf/pages/index.xhtml">American Factfinder</a> and census Tiger Line <a title="TIGER shapefiles" href="https://www.census.gov/geo/maps-data/data/tiger-line.html">shapefiles</a> and then join the two and display the data on a map.  Census data is a great resource that is reliable and well documented (always helpful for research). It is also collected and identified by geography and includes a wide range of geographic detail, from states to neighborhoods. This is ideal for GIS but the formatting of the data upon downloading is not ‘GIS-ready’ and there are several steps necessary to turn the raw downloaded data into a map.</p>
+<p>In this tutorial you will learn to find U.S. Census and GIS data, and then format the two to work together and create a thematic map. We’ll use poverty levels in Nashville, TN; Music City, USA as our example for this guide.</p>'
+---
+
+<h2>Steps</h2>
+<ol>
+	<li>
+		<h2>Finding and downloading the census data.</h2>
+
+<figure>
+	<a href="/i/2013/07/1a_AmericanFactfinder.png"><img class="size-medium wp-image-2107  " title="AmericanFactfinder" src="/i/2013/07/1a_AmericanFactfinder-300x298.png" alt="American Factfinder" width="300" height="298" /></a>
+<figcaption> 1a. American Factfinder</figcaption>
+</figure>
+
+<p>a. Go to <a title="American Factfinder" href="http://factfinder2.census.gov">American Factfinder</a> and start by clicking on ‘Advanced Search’  then ‘Show Me All’ and click ‘Geographies’ on the left</p>
+
+<p>b. In the ‘Select Geographies’ window, choose the ‘Name’ tab.  In the ‘Geography Filter Options’, select ‘Census Tract’ as your Geographic Type. You will then be given options to narrow down your tracts. Choose ‘Within State’ and select ‘Tennessee’ and then choose ‘Within County’ and choose ‘Davidson’ (which is Nashville).</p>
+
+<p>c. You will see that your ‘Geography Results’ on the right have been limited by your choices under ‘Your Geography Filters’ on the left. Select ‘All Census Tracts within Davidson County’ under ‘Geography Results’ and click ‘Add’. You have now added those Tracts to ‘Your Selections’ at the top left of the FactFinder page and you can now close the ‘Select Geographies’ box.</p>
+
+<figure>
+	<a href="/i/2013/07/1e_poverty_table_sq.png"><img class="size-medium wp-image-2110 " title="1e_poverty_table_sq" src="/i/2013/07/1e_poverty_table_sq-295x300.png" alt="" width="295" height="300" /></a>
+<figcaption> 1e. Poverty Status</figcaption>
+</figure>
+
+<p>d. Now it’s time to select your variables. Click ‘Topics’ on the left and then choose ‘People’, then ‘Poverty’, and click ‘Poverty’ again, at which point it will be added to ‘Your Selections’ at the top left and you can close the ‘Select Topics’ box.</p>
+
+<p>e. Since you have now made your geographic and variable selections, you can click ‘Poverty Status in the Past 12 Months’ in the ‘Search Results’ box and you will see a table for the Poverty Status variables for the Census Tracts in Davidson County, TN.</p>
+
+<p>f. Click the ‘Download’ button at the top and select the first option to download a comma delimited file for your data in a single file.</p>
+
+</li>
+	<li>
+		<h2>Formatting your data for use with GIS</h2>
+
+<p>Upon downloading your chosen census variables you must open your data in Excel and properly format the worksheet before adding it to ArcMap and joining it to a GIS shapefile. Factfinder datasets often come with more information that is necessary for your interests. A natural first step is to eliminate unnecessary data.</p>
+
+<figure>
+	<a href="/i/2013/07/2a_zip.png"><img class="size-full wp-image-2139" title="2a_zip" src="/i/2013/07/2a_zip.png" alt="" width="229" height="134" /></a>
+<figcaption> 2a. Zip archive</figcaption>
+</figure>
+
+<p>a. Right click the downloaded ‘ACS_11_5yr_S1701.zip’ file and choose ‘Extract All…’ to unpack the .zip file contents.  Then open the ‘ACS_11_5YR_S1701_with_ann.csv ‘ file in Excel.   This file contains the census data values.</p>
+
+<p>b. Make a copy of your dataset in case you accidentally erase something you later realize you need (File &rarr; Save As, and save as ‘NashvilleTractsPoverty’)</p>
+
+<p>c. For this project, we are only concerned with percent below poverty and we will discard the other data as well as the margins of error.  You can find more information about what each column contains by opening the ‘ACS_11_5YR_S1701_metadata.csv’ file in Excel.  We want to keep column H, ‘HC03_EST_VC01’, which shows the percent below poverty level for the population from whom poverty status is determined.</p>
+
+<p>d. Select the columns D, E, F, and G using the top row, then right click and delete those rows. Then select all of the populated columns after the percent below poverty column (now column D, ‘HC03_EST_VC01’) and delete them as well. Your spreadsheet should now only have 4 columns.</p>
+
+<p>e. Select cell D1 which should read ‘HC03_EST_VC01’ and rename it ‘PctBelowPov’ for ‘Percent Below Poverty.</p>
+
+<figure>
+	<a href="/i/2013/07/2f_excel_rename.png"><img class="size-medium wp-image-2143" title="2f_excel_rename" src="/i/2013/07/2f_excel_rename-300x167.png" alt="" width="300" height="167" /></a>
+<figcaption> 2f. Renamed Columns</figcaption>
+</figure>
+
+<p>f. Rename ‘GEO.id’ to ‘Geo_id’ and ‘GEO.id2’ to ‘Geo_id2’ and ‘GEO.display-label’ to ‘GEO_display_label’ to meet ArcMap naming rules listed below.  Later we will use the ‘Geo_id2’ column for a tabular join.</p>
+
+<p>g. Click File &rarr; Save to save the changes you’ve made in your worksheet.</p>
+
+<p>h. Our poverty data has only one row of headers but when working with your own data keep the first row of headers and delete any additional header rows.  ArcMap only accepts one header row.</p>
+
+<p>i. The following suggestions will help you come out with a GIS-ready dataset.  You will need to rename the headers so that they make sense to you, but be sure to keep the following rules in mind when naming your headers:</p>
+<ul>
+	<li>They cannot start with a number</li>
+	<li>They cannot include figures other than text, numbers, or underscores</li>
+	<li>They cannot include spaces</li>
+	<li>ArcGIS will allow you to use longer field names in a join from Excel, however if you choose to save a shapefile to include your new data it will truncate the field names to 10 characters, therefore you may wish to limit your header column names to 10 characters now</li>
+	<li>Make sure you do not have any empty header cells, or multiple cells with the same name</li>
+	<li>You may wish to create a codebook for decoding your new headers in the future</li>
+</ul>
+
+</li>
+	<li>
+		<h2>Downloading your GIS data</h2>
+
+<p>a. Go to <a href="http://www.census.gov/geo/maps-data/data/tiger-line.html">TIGER/Line Shapefiles</a> in a web browser, preferably Firefox or Internet Explorer.</p>
+
+<figure>
+	<a href="/i/2013/07/2b_TIGER.png"><img class="size-medium wp-image-2156" title="2b_TIGER" src="/i/2013/07/2b_TIGER-300x254.png" alt="" width="300" height="254" /></a>
+	<figcaption> 3b. Download TIGER/Line Shapefile</figcaption>
+</figure>
+
+<p>b. Click the tab ‘2010’, then click Download, then Web Interface.</p>
+
+<p>c. Select ‘Census Tracts’ in the pull down menu, and click ‘submit’.</p>
+
+<p>d. In the ‘2010’ menu, select Tennessee and ‘Submit’.  Then select ‘Davidson County’ and click ‘Download’.</p>
+
+<p>e. Save the .zip file to your machine in the same folder where you saved your Census data – make sure you know where you are saving it!</p>
+
+<p>f. Once it’s saved, navigate to the file, right click it and extract the files from the Zip Folder.  This will create a new folder named tl_2010_47037_tract10 that contains your shapefile.</p>
+
+</li>
+	<li>
+		<h2>Formatting your GIS data</h2>
+
+<p>Your Tiger Line shapefile also requires a small amount of formatting. We will base the join on the data in the‘GEOID’ field in the shapefile, but it is not the proper field type for joining to excel data (The GEOID field is a text field and it needs to be a ‘double’ field to be able to join the ID field in the excel data, which is also ‘double’). These steps will help you load your data and create a new field that is properly formatted.a. Open ArcMap and click File / Add Data / Add Data</p>
+
+<p>b. Navigate to your downloaded (and extracted) Tiger Line Shapefile (you may have to use the ‘connect to folder’ button if you saved these files in a location that has not previously been accessed from ArcMap)</p>
+
+<p>c. Select the tl_2010_47037_tract10.shp dataset and click ‘Add’</p>
+
+<figure>
+	<a href="/i/2013/07/4cAddingNewTractsLayer.png"><img class="size-medium wp-image-2170" title="4cAddingNewTractsLayer" src="/i/2013/07/4cAddingNewTractsLayer-300x210.png" alt="" width="300" height="210" /></a>
+<figcaption> 4c. Tract layer added to ArcMap</figcaption>
+</figure>
+
+<p>d. Right click the dataset name in the ‘Table Of Contents’ and click ‘Open Attribute Table’</p>
+
+<p>e. Click the white ‘Table Options’ button at the top left corner of the table and select ‘Add Field’</p>
+
+<p>f. Name the field ‘ID2’, set the type as ‘Double’, and click ‘OK’</p>
+
+<p>g. Scroll to the right of the table and find the new ‘ID2’ column</p>
+
+<p>h. Right click the ‘ID2’ column header and select ‘Field Calculator’</p>
+
+<p>i. In the ‘fields’ box, find and double click the ‘GEOID10’ field so that the bottom of the window reads ID2= [GEOID10]</p>
+
+<p>j. Click ‘OK’ and the Contents of the GEOID10 field will be calculated into the ‘ID2’ field, which is in the proper format for joining to your worksheet</p>
+
+</li>
+	<li>
+		<h2>Joining the census data to the GIS shapefile</h2>
+
+<p>Once all of your data is formatted properly you can add your excel file and join it to your Shapefile.a. In Excel, save your work and close ‘NashvilleTractsPoverty.csv’.</p>
+
+<p>b. In ArcMap, click File / Add Data / Add Data</p>
+
+<p>c. Navigate to your edited ‘NashvilleTractsPoverty.csv’ file (again, you may have to use the ‘connect to folder’ button if you saved these files in a location that has not previously been accessed from ArcMap)</p>
+
+<p>d. Select the file in the ‘Add data’ window and click ‘Add’</p>
+
+<figure>
+	<a href="/i/2013/07/5h_join_dialog_completed.png"><img class="size-medium wp-image-2174" title="5h_join_dialog_completed" src="/i/2013/07/5h_join_dialog_completed-218x300.png" alt="" width="218" height="300" /></a>
+<figcaption> 5g &amp; 5h. Join dialog</figcaption>
+</figure>
+
+<p>e. You will now see your worksheet in the Table Of Contents under your shapefile name</p>
+<p>**Note: When you add a worksheet, the Table of Contents view switches from ‘Drawing Order’ to ‘Source’. You can change the view using the icons directly below the words ‘Table of Contents’. ‘Drawing Order’ is a nicer and more functional view, but will not show your worksheet.</p>
+
+<p>f. Right click the shapefile name (tl_2010_47037_tract10)and select ‘Joins and Relates &rarr; Join’</p>
+
+<p>g. In the ‘Join Data’ dialogue box be sure the dropdown ‘Join attributes from a table’ is selected then choose’ID2’ (the ID Field you created) in field 1, the name of your worksheet (NashvilleTractsPoverty) in field 2, and ‘GEO_id2’ in field 3</p>
+
+<p>h. Be sure ‘Keep all records’ is selected, then click ‘OK’ to complete the Join</p>
+
+<p>i. To ensure that the Join worked properly, right click the name of the shapefile in the Table of Contents (tl_2010_47037_tract10)and select ‘Open Attribute Table’</p>
+
+<p>j. Scroll to the right in the table and you should see your data after the first ‘ID2’ field. The last field should be ‘PctBelowPov’. If the cells contain values (as opposed to reading) your join was successful</p>
+
+<p>k. Close the table when finished</p>
+
+
+
+</li>
+	<li>
+		<h2>Viewing your data</h2>
+
+<p>Now for the fun part. Once you have joined your data to the GIS shapefile, it is time to create a map!</p>
+
+<figure>
+	<a href="/i/2013/07/6g_mapofpoverty.png"><img class="size-medium wp-image-2180" title="6g_mapofpoverty" src="/i/2013/07/6g_mapofpoverty-300x211.png" alt="" width="300" height="211" /></a>
+<figcaption> 6g. Poverty data displayed on the map</figcaption>
+</figure>
+
+<p>a. Right click the shapefile name in the Table of Contents (tl_2010_47037_tract10) and select ‘Properties’</p>
+
+<p>b. Select the ‘Symbology’ tab</p>
+
+<p>c. Select the ‘Quantities’ option under ‘Show:’</p>
+
+<p>d. Select the ‘PctBelowPov’ variable in the ‘Value’ field</p>
+
+<p>e. Select a light-to-dark color ramp in the ‘Color Ramp’ pull down menu</p>
+
+<p>f. Click ‘OK’</p>
+
+<p>g. Your data will now be displayed on the map</p>
+
+<p>h. Go wild with your GIS and Cartography skills to add a legend, title, and all the classic map elements</p>
+
+
+
+</li>
+	<li>
+		<h2>Saving your data</h2>
+
+<p>You may wish to save a copy of the shapefile that includes your census variables. This will make your data easier to share or use in multiple map projects without relying on an excel sheet and a join.a. With your data still joined, right click ‘tl_2010_47037_tract10’ in the Table of Contents and click ‘Data &rarr; Export Data’. Be sure ‘All features’ is chosen from the drop down.</p>
+
+<p>b. Under ‘Output Feature Class’ browse to the location where your tracts shapefile is saved and choose the name ‘Joined_Tracts.shp’ for your new shapefile.</p>
+
+<p>c. Set ‘Save as type:’ to ‘Shapefile’.</p>
+
+<p>d. Click Save, then OK and ArcMap will export a copy of your shapefile that includes the census variables that you joined. Click Yes to add this new shapefile to your map.</p>
+
+<p>e. Repeat the steps above to symbolize your new shapefile.</p>
+
+<p>f. In ArcMap choose File / Save to save your ArcMap project file.</p>
+
+</li>
+</ol>
+
+<h2>Learn more</h2>
+<ul>
+	<li><a title="Joining and Relating Tables" href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/About_joining_and_relating_tables/005s0000002n000000/">About Joining and Relating Tables</a> from ArcGIS 10.0 online help</li>
+	<li><a title="Essentials of Joining Tables" href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/Essentials_of_joining_tables/005s0000002p000000/">Essentials of Joining Tables</a> from ArcGIS 10.0 online help</li>
+	<li><a title="Joining Attributes in One Table to Another" href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#//005s0000002q000000">Joining Attributes in One Table to Another</a> from ArcGIS 10.0 online help</li>
+	<li><a title="Adding Map Elements" href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/Map_elements/00s900000002000000/">Adding Map Elements </a>from ArcGIS 10.0 online help</li>
+</ul>

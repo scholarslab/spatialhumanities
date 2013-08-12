@@ -1,0 +1,21 @@
+---
+layout: page
+title: Projects &amp; Groups
+bodyclass: projects
+---
+<p>A lovely carousel and directory of projects ahoy. (You'll find all our <a href="https://www.zotero.org/groups/humanitiesgis/items/collectionKey/8EB7UQHC/">Projects</a> and <a href="https://www.zotero.org/groups/humanitiesgis/items/collectionKey/8GQ5BU3X">Groups</a> in our Zotero library.)</p>
+
+<div id="projects">
+{% for page in site.pages %}
+
+{% if page.url contains '/project/project' %}
+<div class="project">
+  <h2>{{ page.title }}</h2>
+  <div class="content">
+  {{ page.content }}
+  </div>
+</div>
+{% endif %}
+
+{% endfor %}
+</div>

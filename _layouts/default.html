@@ -1,0 +1,79 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}">
+  {% endif %}
+  <meta name="author" content="{{ site.author }}">
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/i/icon.png">
+
+  <!-- Feeds -->
+  <link rel="alternate" type="application/rss+xml" title="Atom" href="/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+
+  <!-- Style Sheets -->
+  <link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/c/style.css" type="text/css">
+  {% for css in page.css %}
+  <link rel="stylesheet" href="{{ css }}" type="text/css">
+  {% endfor %}
+</head>
+
+<body{% if page.bodyclass %} class="{{ page.bodyclass }}"{% endif %}>
+  <div id="global-header">
+    <a id="scholarslab-link" href="http://scholarslab.org"><img src="//static.scholarslab.org/images/logos/slab/slab-logo-white-100px.png"></a>
+    <a id="uvalibrary-link" href="http://library.virginia.edu">
+      <img id="uvalibrary" src="//static.scholarslab.org/images/logos/uvalibrary/uvalibrary-logo-white-200px.png">
+    </a>
+  </div>
+  <header role="banner">
+    <a id="site-logo" href="/">
+      <h1>{{site.title}}</h1>
+      <h2>{{site.subtitle}}</h2>
+    </a>
+
+    {% if page.url != '/index.html' %}
+    <nav id="site-navigation">
+      <ul>
+        <li class="spatial-turn"><a href="/spatial-turn">Spatial Turn</a></li>
+        <li class="stepbystep"><a href="/stepbystep"><em>Step By Step</em></a></li>
+        <li class="projects"><a href="/project">Projects & Groups</a></li>
+        <li class="resources"><a href="/resources">Resources</a></li>
+        <li class="about"><a href="/about">About</a></li>
+      </ul>
+    </nav>
+    {% endif %}
+  </header>
+
+  <div id="content" role="main">
+  {{ content }}
+  </div>
+
+  <footer role="contentinfo">
+    <address class="vcard">
+      <span class="org fn">
+        <a class="url organization-name" href="http://scholarslab.org">Scholars’ Lab</a>
+        <a class="organization-unit extended-address" href="http://lib.virginia.edu">University of Virginia Library</a>
+      </span>
+      <span class="street-address">P.O. Box 400129</span>,
+      <span class="locality">Charlottesville</span>, <abbr title="Virginia" class="region">VA</abbr> <span class="postal-code">22904-4129</span>
+      <span class="tel">434.243.8800 <abbr class="type" title="work">(T)</abbr></span>
+      <span class="tel">434.924.1431 <abbr class="type" title="fax">(F)</abbr></span>
+      <ul class="elsewhere">
+        <li><a class="url twitter" href="http://twitter.com/scholarslab">Twitter</a></li>
+        <li><a class="url facebook" href="https://www.facebook.com/scholarslab">Facebook</a></li>
+        <li><a class="url google" href="https://plus.google.com/114472010795641313811">Google</a></li>
+        <li><a class="url vimeo" href="https://vimeo.com/scholarslab">Vimeo</a></li>
+        <li><a class="url github" href="http://github.com/scholarslab/">Github</a></li>
+      </ul>
+    </address>
+  </footer>
+</body>
+</html>
+

@@ -1,0 +1,125 @@
+---
+layout: post
+bodyclass: stepbystep
+title: Mapping Wikileaks Afghan War Diary Data Using Google Fusion Tables (Part 2 of 2)
+tags:
+- Google
+- map
+- stepbystep
+difficulty: moderate
+requirements: 'A <a title="Google Account" href="https://accounts.google.com/NewAccount">Google Account</a>, the <a title="Download .csv dataset" href="/i/2011/08/AfghanWarDiary_EnemiesDetained.csv"><em>AfghanWarDiary-EnemiesDetained.csv</em> dataset</a>, created via <a title="Part 1 of 2" href="http://spatial.scholarslab.org/?p=1283">part 1</a> of this tutorial.'
+excerpt: '<p>This tutorial demonstrates how to import, map, and visualize a <a title="Wikileaks" href="http://www.wikileaks.ch/">Wikileaks</a> dataset using <a title="Google Fusion Tables" href="http://www.google.com/fusiontables/Home">Google Fusion Tables</a>.  It also serves as a general introduction to the use and visualization of datasets via Google Fusion Tables, which is a powerful web application for managing, editing, and publishing visual representations of one’s data  (geospatial and otherwise) on the web.</p>
+<p>In completing this tutorial, you will be able to create, edit, and import an interactive Google map much like those used by major news outlets, e.g. see <a title="The Guardian" href="http://www.guardian.co.uk/world/datablog/interactive/2010/jul/25/afghanistan-war-logs-events">here for an example from <em>The Guardian</em></a>.</p>
+<p>Note: This is part 2 of a 2-part tutorial. <a title="Part 1 of 2" href="/cleaning-wikileaks-data-for-use-in-google-mapping-applications-part-1-of-2/">Part 1</a> demonstrated how to download, decompress, parse, and clean Wikileaks data. Part 2 focuses on visualizing that data. You needn’t complete part 1 to complete part 2.</p>'
+---
+
+<h2>Steps</h2>
+<ol>
+	<li>
+
+<h2>Import the Data into Google Fusion Tables</h2>
+
+<figure>
+	<a href="/i/2011/09/WikiLeaksImport.png"><img class="size-thumbnail wp-image-205 " title="Import new table" src="/i/2011/09/WikiLeaksImport.png" alt="Import new table" width="150" height="150" /></a>
+<figcaption>Import your .csv file to Google Fusion Tables</figcaption>
+</figure>
+
+<p>First, you’ll need to have a Google account to complete this tutorial. <a title="Google Account" href="https://accounts.google.com/NewAccount">Google accounts are free</a>.  Sign in or sign up.</p>
+
+<p>If you didn’t create it yourself in <a title="Part 1 of 2" href="/cleaning-wikileaks-data-for-use-in-google-mapping-applications-part-1-of-2/">Part 1</a>, the dataset for this tutorial (~2 MB) can be downloaded here: <a title="Download .csv data" href="/i/2011/08/AfghanWarDiary_EnemiesDetained.csv">/i/2011/08/AfghanWarDiary_EnemiesDetained.csv</a>. </p>
+
+<p>Go ahead and download this .csv file now (note: a .csv file can be accessed using Excel, but we should have no need of that program).</p>
+
+<p>After downloading the dataset, go to <a title="Google Fusion Tables" href="http://www.google.com/fusiontables">http://www.google.com/fusiontables</a>.  Sign in if you haven’t already, then select the “Import Table” option in the “New Table” drop down menu at the top left of the page.  From there, browse to find the .csv file you just downloaded.  Make sure “Comma” is selected as the “Separator character” and the “Character Encoding” is “UTF-8.”  Click “next”.</p>
+
+<p>Importing may take a minute or so, depending on the speed of your connection.  After the information is uploaded, an import dialog will start and automatically select the first row as the row for determining column names.  Just click “next” here (the .csv file is set up so that the columns’ titles are listed in the first row), and then click “finish” on the last page, unless you want to change the name of the document or provide more documentation.</p>
+
+</li>
+	<li>
+
+<figure>
+	<a href="/i/2011/09/WikiLeaksConfigure.png"><img class="size-thumbnail wp-image-207 " title="Configure" src="/i/2011/09/WikiLeaksConfigure.png" alt="Configure" width="150" height="150" /></a>
+<figcaption>Click “Save”. Now that you’ve Geocoded the data and modified your columns, your Fusion Table is ready to visualize!</figcaption>
+</figure>
+
+<h2>Format the data in Google Fusion Tables</h2>
+
+<p>Once your information is imported, you’ll need to format it so it will be ready for mapping. </p>
+
+<p>In the File menu, select the “Geocode” option.  This will automatically select the “Latitude” column, so just click the Geocode button.  Once the bar hits 100%, you can close this dialog. </p>
+
+<p>You’ll also want to modify the columns so that Google is recognizing each column for what it is.  You can do this by selecting the “Modify columns” option in the Edit menu. Google gives you four options for each column: text, number, location, and date/time.  Make sure the columns in your able are correctly labeled (you might need to change the Type of the “tracking number” to “text”). The latitude column should be labeled location and the box next to “Two column location:” should be checked.  This should happen automatically, but if you want to check, your dialog should look like the image you see to the right. </p>
+
+<p>Click “Save”.  Now that you’ve Geocoded the data and modified your columns, your Fusion Table is ready to visualize!</p>
+
+</li>
+	<li>
+
+<figure><a href="/i/2011/09/WikiLeaksMap.png"><img class="size-thumbnail wp-image-207 " title="Map" src="/i/2011/09/WikiLeaksMap.png" alt="Map" width="150" height="150" /></a>
+<figcaption>First view of our map with default markers. Next we’ll customize!</figcaption>
+</figure>
+
+<h2>Map the data</h2>
+<p>Select the “Map” option from the Visualize menu at the top of your spreadsheet.</p>
+<p>This should automatically drop you into a Google map centered on your data points (in our case, Afghanistan).  The markers may not immediately appear when you first view your map in Google Fusion Tables.  If you don't see the map markers, zoom in or out and they will appear.</p>
+</li>
+	<li>
+
+<figure><a href="/i/2011/09/WikiLeaksConfigWin.png"><img class="size-thumbnail wp-image-207 " title="Configure Pop-Up Window" src="/i/2011/09/WikiLeaksConfigWin.png" alt="Configure Pop-Up Window" width="150" height="150" /></a>
+<figcaption>Here&#39;s an example of my (simple) html layout.</figcaption>
+</figure>
+
+<h2>Visualize the data - Customize the Pop-Up Windows</h2>
+
+<p>Our dataset provides much more than a list of coordinates, so we’ll want to figure out how to display additional information via the pop-up windows and markers.  In this step we will customize the pop-up windows.</p>
+
+<p>Google will automatically select certain fields to appear in the windows that pop up if you click on a marker.  To configure this yourself, go to the “Configure info window” link at the top.   Here, you can click on the columns you’d like displayed and delete those you don’t want displayed– for our purposes we definitely want to add the “Enemies Detained” column to the list of columns to be included. </p>
+
+<p>After choosing the columns you want displayed, use the custom tab to order and format the columns any way you like.  If you are unfamiliar with html, I would suggest simply arranging the rows in the order you’d like them to be listed (see my simple example).  If you do know html, this is a really powerful tool and can be used to add links, images, etc.</p>
+
+</li>
+	<li>
+
+<figure><a href="/i/2011/09/WikiLeaksConfigMarkers.png"><img class="size-thumbnail wp-image-207  " title="Configure Markers" src="/i/2011/09/WikiLeaksConfigMarkers.png" alt="Configure Markers" width="150" height="150" /></a>
+<figcaption>Here’s an example of how my customizations look (note the first two buckets are not shown). I use smaller divisions towards the low end of the amount of detainees and larger ones towards the top of the range.</figcaption>
+</figure>
+
+<h2>Visualize the data - Customize the Markers</h2>
+
+<p>Although your map will now mark the relevant locations and display the information you want to display in the pop-up windows, all the markers will look the same and give no hint as to which markers mark locations where greater numbers of detainees were taken into custody. </p>
+
+<p>To highlight this information, you’ll need to select the “Configure styles” option above the map.  Here you can customize your marker icons by how many detainees were taken.</p>
+
+<p>Since we are only dealing with points on the map, you’ll want to adjust the settings for the “Marker icon” (the default selection).  Once you’re on that option, select the “Buckets” tab to the right, then divide the markers into 8 buckets and change the final number to 150. </p>
+
+<p>This will divide the markers equally, and assign smaller colored markers to the lower numbers and larger markers to the higher numbers.  You can customize the way these numbers are divided as well (see my example below), but you’ll see changes even if you don’t customize them. </p>
+
+<p> Once you’ve determined your buckets, click save.  The markers will now not only show where detainees were picked up, but also indicate how many detainees were picked up in those locations.</p>
+</li>
+	<li>
+
+<figure>
+	<a href="/i/2011/09/WikiLeaksLastMap.png"><img class="size-thumbnail wp-image-169 " title="Wikileaks Map" src="/i/2011/09/WikiLeaksLastMap.png" alt="Wikileaks Map" width="150" height="150" /></a>
+<figcaption>If you’d like to embed a larger or smaller version of the map, simply change the “width” and “height” attributes in the iframe embeddable code to the size you desire.</figcaption>
+</figure>
+
+<h2>Share/Embed the Map</h2>
+
+<p>After you’re finished, you’ll want to share your map.  You can do so by clicking the “Share” button at the top right, which will let you send an email to friends or colleagues. </p>
+
+<p>You can also click the “Get link” button to obtain a link to send or publish – if you do send the link, you’ll want to change the settings for the map from “Private” to either “Public” or “Unlisted” via the same “Share” button mentioned above, so that other users are allowed to view your map.  </p>
+
+<p>Here’s a link to the map I created following this process: <a title="Google Fusion Tables map" href="http://www.google.com/fusiontables/DataSource?snapid=S197759ENg-&amp;pli=1">http://www.google.com/fusiontables/DataSource?snapid=S197759ENg-&amp;pli=1</a></p>
+
+<p>If you’d like to embed the map onto your own website, you can select the “Get embeddable link” option just above the map.  This will provide you with code that you can embed within a website, blog, or other online resource.  If you’d like the map to appear bigger, you just need to change the width and height options at the beginning of the code. </p>
+
+<p>Finally, if you’d like to view your map in Google Earth or in a GIS program you can “Export to KML” or “Get EML network link.”  The KML file can be viewed by opening it with <a title="Google Earth" href="http://earth.google.com">Google Earth</a>.</p>
+</li>
+</ol>
+<h2>Learn More</h2>
+<p class="closing">Congrats! You've created an interactive visualization using Wikileaks information. The process you've learned here is applicable not only to this content, but to any tabular dataset with a geospatial component.</p>
+
+<ul>
+	<li><a title="Google Fusion Tables Help" href="http://www.google.com/support/fusiontables/">Google Fusion Tables Help</a></li>
+</ul>
+

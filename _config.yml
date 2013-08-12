@@ -1,0 +1,12 @@
+# standard jekyll configuration
+
+permalink: /:categories/:title/
+pygments:  true
+markdown: maruku
+exclude: ['readme.md', 'Rakefile', 'Procfile', 'config.rb', '.gitignore', '.sass-cache', 'Gemfile', 'Gemfile.lock']
+include: ['.htaccess']
+
+title: Spatial Humanities
+subtitle: A Project of the Institute for Enabling Geospatial Scholarship
+author: Scholars' Lab
+domain: http://spatial.scholarslab.org
