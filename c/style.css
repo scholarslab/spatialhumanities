@@ -968,6 +968,14 @@ section {
     color: #289f9f;
   }
 
+  .contribute nav li.contribute a {
+    background: white;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: #289f9f;
+  }
+
   #site-logo {
     display: block;
     text-align: left;

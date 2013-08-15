@@ -400,7 +400,7 @@ nav {
   }
 }
 
-@each $page in spatial-turn, projects, research, geoinst, stepbystep, q-and-a, about {
+@each $page in spatial-turn, projects, research, geoinst, stepbystep, q-and-a, about, contribute {
   .#{$page} nav li.#{$page} a {
     background: white;
     @include box-shadow(none);
