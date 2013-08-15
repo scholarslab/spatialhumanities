@@ -869,7 +869,6 @@ section {
     padding-left: 1em;
     margin-right: -1em;
     padding-right: 1em;
-    margin-top: 1.75em;
     -webkit-box-shadow: inset 0 -6px 6px -6px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: inset 0 -6px 6px -6px rgba(0, 0, 0, 0.5);
     box-shadow: inset 0 -6px 6px -6px rgba(0, 0, 0, 0.5);
@@ -958,6 +957,7 @@ section {
   #site-logo {
     display: block;
     text-align: left;
+    margin-bottom: 1.75em;
   }
   #site-logo h1 {
     font-size: 2.5em;

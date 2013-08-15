@@ -354,7 +354,6 @@ header[role=banner] {
 nav {
     background: rgba($base-color, 0.5);
     @include bleed($grid-padding);
-    margin-top: rhythm(1);
       @include box-shadow(inset 0 -6px 6px -6px rgba(black, 0.5));
   
     ul {
@@ -399,6 +398,7 @@ nav {
 #site-logo {
   display:block;
   text-align:left;
+  @include trailer(1);
 
   h1 {
     @include adjust-font-size-to(40px);
@@ -408,7 +408,7 @@ nav {
 
   h2 {
     @include adjust-font-size-to(16px);
-    margin:0;
+    margin: 0;
     line-height:1;
   }
 }
