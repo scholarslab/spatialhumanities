@@ -795,7 +795,7 @@ section {
   }
 
   .kicker {
-    margin-bottom: 0;
+    margin: 0;
     font-size: 0.875em;
     line-height: 2em;
     line-height: 2em;
@@ -804,6 +804,20 @@ section {
   }
   .kicker + * {
     margin-top: 0 !important;
+  }
+
+  .byline {
+    font-size: 0.875em;
+    line-height: 2em;
+    line-height: 2em;
+    margin: 2em 0 0;
+    color: rgba(75, 75, 75, 0.75);
+  }
+  .byline:before {
+    content: "by ";
+    font-style: italic;
+    font-size: 0.75em;
+    line-height: 2.33333em;
   }
 
   #global-header {
@@ -1007,6 +1021,27 @@ section {
     color: rgba(75, 75, 75, 0.75);
     text-align: center;
     display: block;
+  }
+
+  .author {
+    padding: 1px 1.75em;
+    background: rgba(50, 200, 200, 0.1);
+    margin-bottom: 3.5em;
+  }
+  .author img {
+    float: right;
+    background: #a9eaea;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 10px;
+    margin: 0 0 0.875em 0.875em;
+  }
+  .author p {
+    font-size: 0.875em;
+    line-height: 2em;
+    line-height: 2em;
+  }
+  .author p.author-name {
+    font-weight: bold;
   }
 
   .contextual li + li,

@@ -281,7 +281,7 @@ a.ftn {
 }
 
 .kicker {
-  margin-bottom:0;
+  margin:0;
   @include adjust-font-size-to(14px);
   @include adjust-leading-to(1, 14px);
   font-style:italic;
@@ -291,6 +291,19 @@ a.ftn {
      margin-top:0 !important;
    }
  }
+
+.byline {
+  @include adjust-font-size-to(14px);
+  @include adjust-leading-to(1, 14px);
+  margin:rhythm(1, 14px) 0 0;
+  color: $default-color-light;
+
+  &:before {
+    content: "by ";
+    font-style:italic;
+    @include adjust-font-size-to(12px);
+  }
+}
 
 // Global header
 #global-header {
@@ -439,6 +452,28 @@ article + article:before {
   color: $default-color-light;
   text-align:center;
   display:block;
+}
+
+.author {
+  padding: 1px rhythm(1);
+  background: rgba($link-hover-color, 0.1);
+  margin-bottom: rhythm(2);
+  img {
+    float:right;
+    background: lighten($link-hover-color, 30%);
+    background: rgba(white, 0.75);
+    padding: 10px;
+    margin: 0 0 rhythm(0.5) rhythm(0.5);
+  }
+
+  p {
+    @include adjust-font-size-to(14px);
+    @include adjust-leading-to(1,14px);
+
+    &.author-name {
+      font-weight:bold;
+    }
+  }
 }
 
 .contextual,
