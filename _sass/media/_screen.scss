@@ -413,9 +413,24 @@ nav {
   }
 }
 
+#introduction,
+#introduction-global {
+  @include adjust-font-size-to(20px);
+  @include adjust-leading-to(1.25, 20px);
+}
+
+
 div[role=main] {
-  background: white;
-  padding: rhythm(1) $grid-padding;
+  @include background(
+    linear-gradient(white, white),
+    image-url('rumsay.jpg') top right no-repeat fixed
+  );
+
+  background-size: auto, cover;
+  background-attachment:auto, fixed;
+  background-position: 0 -150px, top right;
+  background-repeat:no-repeat;
+  padding: rhythm(1) $grid-padding 150px;
   @include clearfix;
 }
 
@@ -426,8 +441,8 @@ article + article:before {
   display:block;
 }
 
-.contextual {
-
+.contextual,
+.global {
   li + li {
     border-top: 1px dotted #ccc;
   }
@@ -589,6 +604,15 @@ footer[role=contentinfo] {
   div[role=main] {
     @include pad(1,1, 16);
   }
+
+  #introduction {
+    @include span-columns(8, 14);
+  }
+
+  #introduction-global {
+    @include span-columns(5 omega, 14);
+  }
+
   #primary,
   article .entry {
     @include span-columns(9,14);

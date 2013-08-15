@@ -972,9 +972,24 @@ section {
     line-height: 1;
   }
 
+  #introduction,
+  #introduction-global {
+    font-size: 1.25em;
+    line-height: 1.4em;
+    line-height: 1.75em;
+  }
+
   div[role=main] {
-    background: white;
-    padding: 1.75em 1em;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #ffffff)), url('/i/rumsay.jpg?1371487618') top right no-repeat fixed;
+    background: -webkit-linear-gradient(#ffffff, #ffffff), url('/i/rumsay.jpg?1371487618') top right no-repeat fixed;
+    background: -moz-linear-gradient(#ffffff, #ffffff), url('/i/rumsay.jpg?1371487618') top right no-repeat fixed;
+    background: -o-linear-gradient(#ffffff, #ffffff), url('/i/rumsay.jpg?1371487618') top right no-repeat fixed;
+    background: linear-gradient(#ffffff, #ffffff), url('/i/rumsay.jpg?1371487618') top right no-repeat fixed;
+    background-size: auto, cover;
+    background-attachment: auto, fixed;
+    background-position: 0 -150px, top right;
+    background-repeat: no-repeat;
+    padding: 1.75em 1em 150px;
   }
   div[role=main]:before, div[role=main]:after {
     content: "";
@@ -994,18 +1009,24 @@ section {
     display: block;
   }
 
-  .contextual li + li {
+  .contextual li + li,
+  .global li + li {
     border-top: 1px dotted #ccc;
   }
-  .contextual a {
+  .contextual a,
+  .global a {
     display: block;
     text-decoration: none;
     padding: 0.4375em 0.875em;
   }
-  .contextual a:hover, .contextual a:focus, li.current .contextual a {
+  .contextual a:hover, .contextual a:focus, li.current .contextual a,
+  .global a:hover,
+  .global a:focus, li.current
+  .global a {
     background-color: rgba(50, 200, 200, 0.05);
   }
-  .contextual li.current a {
+  .contextual li.current a,
+  .global li.current a {
     background-color: rgba(50, 200, 200, 0.1);
     color: #32c8c8;
   }
@@ -1185,6 +1206,18 @@ section {
   div[role=main] {
     padding-left: 6.32911%;
     padding-right: 6.32911%;
+  }
+
+  #introduction {
+    width: 56.52174%;
+    float: left;
+    margin-right: 1.44928%;
+  }
+
+  #introduction-global {
+    width: 34.78261%;
+    float: right;
+    margin-right: 0;
   }
 
   #primary,
