@@ -11,6 +11,15 @@ bodyclass: about
     {{ content }}
   </div>
   <footer>
-    {% include about-nav.html %}
+    <nav class="contextual">
+      <ul>
+        <li{% if page.url == '/about/index.html' %} class="current"{% endif %}><a href="/about/">About the Institute</a></li>
+        {% for aboutpage in site.pages %}
+        {% if aboutpage.url contains '/about/about-section/' %}
+        <li{% if page.url == aboutpage.url %} class="current"{% endif %}><a href="{{aboutpage.url}}">{{ aboutpage.title }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
   </footer>
 </article>

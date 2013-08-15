@@ -11,12 +11,15 @@ bodyclass: spatial-turn
     {{ content }}
   </div>
   <footer>
-    <ul>
-      {% for spatialpage in site.pages %}
-      {% if spatialpage.url contains '/spatial-turn/the-spatial-turn' %}
-      <li{% if page.url == spatialpage.url %} class="current"{% endif %}><a href="{{spatialpage.url}}">{{ spatialpage.title }}</a></li>
-      {% endif %}
-      {% endfor %}
-    </ul>
+    <nav class="contextual">
+      <ul>
+        <li{% if page.url == '/spatial-turn/index.html' %} class="current"{% endif %}><a href="/spatial-turn/">What is the Spatial Turn?</a></li>
+        {% for spatialpage in site.pages %}
+        {% if spatialpage.url contains '/spatial-turn/the-spatial-turn' %}
+        <li{% if page.url == spatialpage.url %} class="current"{% endif %}><a href="{{spatialpage.url}}">{{ spatialpage.title }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
   </footer>
 </article>

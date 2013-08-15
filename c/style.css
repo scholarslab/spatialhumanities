@@ -994,6 +994,22 @@ section {
     display: block;
   }
 
+  .contextual li + li {
+    border-top: 1px dotted #ccc;
+  }
+  .contextual a {
+    display: block;
+    text-decoration: none;
+    padding: 0.4375em 0.875em;
+  }
+  .contextual a:hover, .contextual a:focus, li.current .contextual a {
+    background-color: rgba(50, 200, 200, 0.05);
+  }
+  .contextual li.current a {
+    background-color: rgba(50, 200, 200, 0.1);
+    color: #32c8c8;
+  }
+
   #projects {
     -webkit-column-count: 2;
     -moz-column-count: 2;

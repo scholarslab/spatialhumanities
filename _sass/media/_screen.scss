@@ -426,6 +426,31 @@ article + article:before {
   display:block;
 }
 
+.contextual {
+
+  li + li {
+    border-top: 1px dotted #ccc;
+  }
+
+  a {
+    display:block;
+    text-decoration:none;
+    padding: rhythm(0.25) rhythm(0.5);
+
+    &:hover,
+    &:focus,
+    li.current & {
+      background-color: rgba($link-hover-color, 0.05);
+    }
+  }
+
+  li.current a {
+    background-color: rgba($link-hover-color, 0.1);
+    color: $link-hover-color;
+  }
+
+}
+
 #projects {
   @include column-count(2);
   -webkit-column-gap: 2em;
