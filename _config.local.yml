@@ -1,4 +1,3 @@
 # standard jekyll configuration
 
-
-baseurl: /
+baseurl: "/"
