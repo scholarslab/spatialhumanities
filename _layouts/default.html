@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="{{site.baseurl}}i/icon.png">
+  <link rel="icon" type="image/png" href="{{site.baseurl}}/i/icon.png">
 
   <!-- Feeds -->
   <link rel="alternate" type="application/rss+xml" title="Atom" href="/atom.xml">
@@ -19,7 +19,7 @@
 
   <!-- Style Sheets -->
   <link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="{{ site.baseurl}}c/style.css" type="text/css">
+  <link rel="stylesheet" href="{{ site.baseurl}}/c/style.css" type="text/css">
   {% for css in page.css %}
   <link rel="stylesheet" href="{{ css }}" type="text/css">
   {% endfor %}
@@ -33,7 +33,7 @@
     </a>
   </div>
   <header role="banner">
-    <a id="site-logo" href="{{ site.baseurl }}">
+    <a id="site-logo" href="{{ site.baseurl }}/">
       <h1>{{site.title}}</h1>
       <h2>{{site.subtitle}}</h2>
     </a>
@@ -41,11 +41,11 @@
     {% if page.url != '/index.html' %}
     <nav id="site-navigation">
       <ul>
-        <li class="spatial-turn"><a href="{{site.baseurl}}spatial-turn">Spatial Turn</a></li>
-        <li class="stepbystep"><a href="{{site.baseurl}}stepbystep"><em>Step By Step</em></a></li>
-        <li class="projects"><a href="{{site.baseurl}}project">Projects & Groups</a></li>
-        <li class="resources"><a href="{{site.baseurl}}resources">Resources</a></li>
-        <li class="about"><a href="{{site.baseurl}}about">About</a></li>
+        <li class="spatial-turn"><a href="{{site.baseurl}}/spatial-turn">Spatial Turn</a></li>
+        <li class="stepbystep"><a href="{{site.baseurl}}/stepbystep"><em>Step By Step</em></a></li>
+        <li class="projects"><a href="{{site.baseurl}}/project">Projects & Groups</a></li>
+        <li class="resources"><a href="{{site.baseurl}}/resources">Resources</a></li>
+        <li class="about"><a href="{{site.baseurl}}/about">About</a></li>
       </ul>
     </nav>
     {% endif %}
