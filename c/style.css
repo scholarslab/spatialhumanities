@@ -565,7 +565,7 @@ section {
     transition: opacity 0.5s;
   }
 
-  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  h1 a, h2 a, h3 a, h4 a, .profile h2 a, h5 a, h6 a {
     text-decoration: none;
   }
 
@@ -596,12 +596,12 @@ section {
     margin-top: 1.4em;
   }
 
-  h4 {
+  h4, .profile h2 {
     font-size: 1em;
     line-height: 1.75em;
     margin-top: 3.5em;
   }
-  h3 + h4 {
+  h3 + h4, .profile h3 + h2 {
     margin-top: 1.75em;
   }
 
@@ -611,7 +611,7 @@ section {
     color: rgba(75, 75, 75, 0.75);
     margin-top: 3.5em;
   }
-  h4 + h5 {
+  h4 + h5, .profile h2 + h5 {
     margin-top: 1.75em;
   }
 
@@ -626,8 +626,13 @@ section {
     margin-top: 1.75em;
   }
 
-  h3 + p, h4 + p, h5 + p, h6 + p {
+  h3 + p, h4 + p, .profile h2 + p, h5 + p, h6 + p {
     margin-top: 0;
+  }
+
+  .profile h2 {
+    margin: 1.75em 0 0;
+    font-weight: bold;
   }
 
   p {
