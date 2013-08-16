@@ -1089,14 +1089,14 @@ section {
     column-gap: 2em;
   }
 
-  .project {
+  div.project {
     overflow: auto;
     min-height: 1px;
   }
-  .project h2 {
+  div.project h2 {
     margin-bottom: 1em;
   }
-  .project img {
+  div.project img {
     display: block;
     max-width: 40%;
     float: right;
