@@ -532,6 +532,49 @@ div.project {
   }
 }
 
+.stepbystep {
+  footer {
+  padding: rhythm(1);
+  background: lighten($link-hover-color, 45%);
+  background: rgba($link-hover-color, 0.1);
+
+    h2 {
+      @extend h4;
+      font-weight:bold;
+      margin:0;
+    }
+
+    p {
+      @include adjust-font-size-to(14px);
+      @include adjust-leading-to(.75, 14px);
+    }
+  }
+}
+
+.stepbystep-board {
+  list-style:none;
+  margin-left:0;
+  padding-left:0;
+  @include adjust-font-size-to(14px);
+  @include adjust-leading-to(.75, 14px);
+  li {
+    @include trailer(.75, 14px);
+  }
+
+  span {
+    display:block;
+  }
+
+  .name {
+    font-weight:bold;
+  }
+
+  .role {
+    font-style:italic;
+    color: $default-color-lighter;
+  }
+}
+
 // Footers
 footer[role=contentinfo] {
   @include clearfix;

@@ -504,11 +504,11 @@ section {
   }
 
   html {
-    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, color-stop(0%, rgba(0, 0, 0, 0.5)), color-stop(100%, rgba(0, 0, 0, 0.8))), url('../i/rumsay.jpg?1371487618') top right no-repeat fixed;
-    background: -webkit-radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('../i/rumsay.jpg?1371487618') top right no-repeat fixed;
-    background: -moz-radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('../i/rumsay.jpg?1371487618') top right no-repeat fixed;
-    background: -o-radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('../i/rumsay.jpg?1371487618') top right no-repeat fixed;
-    background: radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('../i/rumsay.jpg?1371487618') top right no-repeat fixed;
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, color-stop(0%, rgba(0, 0, 0, 0.5)), color-stop(100%, rgba(0, 0, 0, 0.8))), url('../i/rumsay.jpg?1376663138') top right no-repeat fixed;
+    background: -webkit-radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('../i/rumsay.jpg?1376663138') top right no-repeat fixed;
+    background: -moz-radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('../i/rumsay.jpg?1376663138') top right no-repeat fixed;
+    background: -o-radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('../i/rumsay.jpg?1376663138') top right no-repeat fixed;
+    background: radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('../i/rumsay.jpg?1376663138') top right no-repeat fixed;
     background-size: cover;
     background-attachment: fixed;
   }
@@ -565,7 +565,7 @@ section {
     transition: opacity 0.5s;
   }
 
-  h1 a, h2 a, h3 a, h4 a, .profile h2 a, h5 a, h6 a {
+  h1 a, h2 a, h3 a, h4 a, .profile h2 a, .stepbystep footer h2 a, h5 a, h6 a {
     text-decoration: none;
   }
 
@@ -596,12 +596,12 @@ section {
     margin-top: 1.4em;
   }
 
-  h4, .profile h2 {
+  h4, .profile h2, .stepbystep footer h2 {
     font-size: 1em;
     line-height: 1.75em;
     margin-top: 3.5em;
   }
-  h3 + h4, .profile h3 + h2 {
+  h3 + h4, .profile h3 + h2, .stepbystep footer h3 + h2 {
     margin-top: 1.75em;
   }
 
@@ -611,7 +611,7 @@ section {
     color: rgba(75, 75, 75, 0.75);
     margin-top: 3.5em;
   }
-  h4 + h5, .profile h2 + h5 {
+  h4 + h5, .profile h2 + h5, .stepbystep footer h2 + h5 {
     margin-top: 1.75em;
   }
 
@@ -626,7 +626,7 @@ section {
     margin-top: 1.75em;
   }
 
-  h3 + p, h4 + p, .profile h2 + p, h5 + p, h6 + p {
+  h3 + p, h4 + p, .profile h2 + p, .stepbystep footer h2 + p, h5 + p, h6 + p {
     margin-top: 0;
   }
 
@@ -1007,11 +1007,11 @@ section {
   }
 
   div[role=main] {
-    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #ffffff)), url('../i/rumsay.jpg?1371487618') top right no-repeat fixed;
-    background: -webkit-linear-gradient(#ffffff, #ffffff), url('../i/rumsay.jpg?1371487618') top right no-repeat fixed;
-    background: -moz-linear-gradient(#ffffff, #ffffff), url('../i/rumsay.jpg?1371487618') top right no-repeat fixed;
-    background: -o-linear-gradient(#ffffff, #ffffff), url('../i/rumsay.jpg?1371487618') top right no-repeat fixed;
-    background: linear-gradient(#ffffff, #ffffff), url('../i/rumsay.jpg?1371487618') top right no-repeat fixed;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #ffffff)), url('../i/rumsay.jpg?1376663138') top right no-repeat fixed;
+    background: -webkit-linear-gradient(#ffffff, #ffffff), url('../i/rumsay.jpg?1376663138') top right no-repeat fixed;
+    background: -moz-linear-gradient(#ffffff, #ffffff), url('../i/rumsay.jpg?1376663138') top right no-repeat fixed;
+    background: -o-linear-gradient(#ffffff, #ffffff), url('../i/rumsay.jpg?1376663138') top right no-repeat fixed;
+    background: linear-gradient(#ffffff, #ffffff), url('../i/rumsay.jpg?1376663138') top right no-repeat fixed;
     background-size: auto, cover;
     background-attachment: auto, fixed;
     background-position: 0 -150px, top right;
@@ -1104,6 +1104,43 @@ section {
     margin-bottom: 1.75em;
     border: 1px dotted rgba(75, 75, 75, 0.75);
     padding: 0.4375em;
+  }
+
+  .stepbystep footer {
+    padding: 1.75em;
+    background: #e7f9f9;
+    background: rgba(50, 200, 200, 0.1);
+  }
+  .stepbystep footer h2 {
+    font-weight: bold;
+    margin: 0;
+  }
+  .stepbystep footer p {
+    font-size: 0.875em;
+    line-height: 2em;
+    line-height: 1.5em;
+  }
+
+  .stepbystep-board {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    font-size: 0.875em;
+    line-height: 2em;
+    line-height: 1.5em;
+  }
+  .stepbystep-board li {
+    margin-bottom: 1.5em;
+  }
+  .stepbystep-board span {
+    display: block;
+  }
+  .stepbystep-board .name {
+    font-weight: bold;
+  }
+  .stepbystep-board .role {
+    font-style: italic;
+    color: rgba(75, 75, 75, 0.5);
   }
 
   footer[role=contentinfo] {
