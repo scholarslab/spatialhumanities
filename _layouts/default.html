@@ -25,7 +25,9 @@
   {% endfor %}
 </head>
 
-<body{% if page.bodyclass %} class="{{ page.bodyclass }}"{% endif %}>
+{% assign bodyclass = page.url | remove_first:'/' | replace:"/index.html","" | replace:" ", "-" | split:"/" | join:"," %}
+
+<body class="{{ bodyclass }}">
   <div id="global-header">
     <a id="scholarslab-link" href="http://scholarslab.org"><img src="//static.scholarslab.org/images/logos/slab/slab-logo-white-100px.png"></a>
     <a id="uvalibrary-link" href="http://library.virginia.edu">
