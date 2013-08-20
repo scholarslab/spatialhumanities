@@ -68,6 +68,12 @@ h1 {
 h2 {
   @include adjust-font-size-to(24px);
   @include leader(2, 24px);
+
+  h1 + &,
+  h1 ~ * &:first-child {
+    @include leader(1, 24px);
+  }
+
 }
 
 h3 {
@@ -449,7 +455,7 @@ div[role=main] {
   background-attachment:auto, fixed;
   background-position: 0 -150px, top right;
   background-repeat:no-repeat;
-  padding: rhythm(1) $grid-padding 150px;
+  padding: rhythm(2) $grid-padding 190px;
   @include clearfix;
 }
 
@@ -707,6 +713,14 @@ footer[role=contentinfo] {
     @include span-columns(4 omega, 14);
   }
 
+  .resources {
+    section {
+      @include span-columns(7, 14);
+      &:nth-of-type(even) {
+        @include span-columns(7 omega, 14);
+      }
+    }
+  }
 }
 @if $development == true {
 

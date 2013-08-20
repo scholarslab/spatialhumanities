@@ -584,6 +584,9 @@ section {
     line-height: 1.16667em;
     margin-top: 2.33333em;
   }
+  h1 + h2, h1 ~ * h2:first-child {
+    margin-top: 1.16667em;
+  }
 
   h3 {
     font-size: 1.25em;
@@ -1016,7 +1019,7 @@ section {
     background-attachment: auto, fixed;
     background-position: 0 -150px, top right;
     background-repeat: no-repeat;
-    padding: 1.75em 1em 150px;
+    padding: 3.5em 1em 190px;
   }
   div[role=main]:before, div[role=main]:after {
     content: "";
@@ -1315,6 +1318,17 @@ section {
   #secondary,
   article footer {
     width: 27.53623%;
+    float: right;
+    margin-right: 0;
+  }
+
+  .resources section {
+    width: 49.27536%;
+    float: left;
+    margin-right: 1.44928%;
+  }
+  .resources section:nth-of-type(even) {
+    width: 49.27536%;
     float: right;
     margin-right: 0;
   }
