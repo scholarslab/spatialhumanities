@@ -1123,6 +1123,29 @@ section {
     line-height: 2em;
     line-height: 1.5em;
   }
+  .stepbystep article > ol {
+    list-style: none;
+    margin-left: 0;
+    counter-reset: li;
+  }
+  .stepbystep article > ol > li {
+    position: relative;
+    background: rgba(50, 200, 200, 0.1);
+    padding: 1px 3.5em 3.5em;
+    margin-bottom: 1.75em;
+  }
+  .stepbystep article > ol > li:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    color: #333;
+    font-size: 10em;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: right;
+    z-index: 1;
+  }
 
   .stepbystep-board {
     list-style: none;

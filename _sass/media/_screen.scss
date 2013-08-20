@@ -555,6 +555,32 @@ div.project {
       @include adjust-leading-to(.75, 14px);
     }
   }
+
+  article > ol {
+    list-style:none;
+    margin-left:0;
+    counter-reset: li;
+
+    & > li {
+      position:relative;
+      background: rgba($link-hover-color, 0.1);
+      padding: 1px rhythm(2) rhythm(2);
+      @include trailer(1);
+
+      &:before {
+        content: counter(li);
+        counter-increment: li;
+        position:absolute;
+        top:50px;
+        right:10px;
+        color: #333;
+        font-size: 10em;
+        color: rgba(white, 0.75);
+        text-align:right;
+        z-index:1;
+      }
+    }
+  }
 }
 
 .stepbystep-board {
