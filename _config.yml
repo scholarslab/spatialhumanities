@@ -9,4 +9,3 @@ include: ['.htaccess']
 title: Spatial Humanities
 subtitle: A Project of the Institute for Enabling Geospatial Scholarship
 author: Scholars' Lab
-baseurl: "/spatialhumanities"
